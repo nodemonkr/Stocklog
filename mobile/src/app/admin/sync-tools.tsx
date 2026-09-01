@@ -1,0 +1,33 @@
+import { useCallback, useMemo, useState } from 'react';
+import { Alert, StyleSheet, Text, View } from 'react-native';
+import { router, useFocusEffect } from 'expo-router';
+import { Button, Card, Chip, Field, PageHeader, Screen, SectionTitle, Stat } from '@/components/ui';
+import { colors } from '@/constants/theme';
+import { get, post } from '@/lib/api';
+import { errorText } from '@/lib/format';
+
+const jobs=[
+ {key:'market',label:'시장 데이터',status:'/api/admin/market-data/status',actions:[['키움 시작','/api/admin/market-data/start/kiwoom'],['DART 시작','/api/admin/market-data/start/dart'],['전체 시작','/api/admin/market-data/start/all'],['중지','/api/admin/market-data/stop']]},
+ {key:'kiwoomTheme',label:'키움 테마',status:'/api/admin/theme-sync/status',actions:[['시작','/api/admin/theme-sync/start'],['중지','/api/admin/theme-sync/stop']]},
+ {key:'marketTheme',label:'시장 테마',status:'/api/admin/market-theme-sync/status',actions:[['시작','/api/admin/market-theme-sync/start'],['중지','/api/admin/market-theme-sync/stop']]},
+ {key:'classification',label:'사업 분류 보강',status:'/api/admin/classification-sync/status',actions:[['시작','/api/admin/classification-sync/start'],['중지','/api/admin/classification-sync/stop']]},
+] as const;
+const scopeDefs=[
+ ['kiwoom','키움 시세','종목·일봉·투자지표'],['dart','DART 재무','재무·밸류 지표'],['kiwoom_themes','키움 테마','테마·구성종목'],['market_themes','시장 테마','시장 테마 데이터'],['classification','종목 분류','사업·업종 분류'],['theme_engine','표준 테마','StockLog 테마 재구축'],['flow','수급 데이터','최근 거래일 수급'],['smart_scores','스마트 점수','분석 점수 사전계산'],
+] as const;
+const allScopes=scopeDefs.map(x=>x[0]);
+
+export default function SyncTools(){
+ const [states,setStates]=useState<any>({}),[unified,setUnified]=useState<any>(null),[flowLimit,setFlowLimit]=useState('0'),[flowDays,setFlowDays]=useState('20'),[busy,setBusy]=useState(''),[scopes,setScopes]=useState<string[]>([...allScopes]);
+ const load=useCallback(async()=>{const entries=await Promise.all(jobs.map(async j=>[j.key,await get(j.status).catch(e=>({error:errorText(e)}))]));const [flow,uni]=await Promise.all([get('/api/admin/flow-sync/status').catch(e=>({error:errorText(e)})),get('/api/admin/unified-sync/status').catch(e=>({error:errorText(e)}))]);setStates(Object.fromEntries([...entries,['flow',flow]]));setUnified(uni)},[]);
+ useFocusEffect(useCallback(()=>{void load();const id=setInterval(()=>void load(),5000);return()=>clearInterval(id)},[load]));
+ const run=async(label:string,path:string,body:any={})=>{setBusy(path);try{const r=await post(path,body);Alert.alert(label,r?.message||'요청을 전송했습니다.');await load()}catch(e){Alert.alert(label,errorText(e))}finally{setBusy('')}};
+ const toggleScope=(k:string)=>setScopes(v=>v.includes(k)?v.filter(x=>x!==k):[...v,k].filter(x=>allScopes.includes(x as any)));
+ const runUnified=async()=>{if(!scopes.length){Alert.alert('통합 동기화','동기화 항목을 하나 이상 선택해주세요.');return}await run('선택 통합 동기화','/api/admin/unified-sync/start',{flow_universe_limit:Number(flowLimit||0),flow_history_days:Number(flowDays||20),scopes})};
+ const steps=useMemo(()=>Array.isArray(unified?.steps)?unified.steps:Array.isArray(unified?.provider_status?.steps)?unified.provider_status.steps:[],[unified]);
+ return <Screen><PageHeader eyebrow="ADMIN / SYNC" title="동기화 제어" subtitle="웹 관리자와 같은 개별 작업 및 선택 통합 동기화를 제공합니다." right={<Button compact tone="ghost" title="닫기" onPress={()=>router.back()}/>}/>
+ <Card><SectionTitle title="선택 통합 동기화" hint={unified?.message||'필요한 항목만 골라 한 번에 실행할 수 있습니다.'}/><View style={s.chips}>{scopeDefs.map(([k,l,h])=><Chip key={k} label={`${l} · ${h}`} active={scopes.includes(k)} onPress={()=>toggleScope(k)}/>)}</View><View style={s.actions}><Button compact tone="ghost" title={scopes.length===allScopes.length?'전체 해제':'전체 선택'} disabled={!!busy} onPress={()=>setScopes(scopes.length===allScopes.length?[]:[...allScopes])}/><Button compact title={busy==='/api/admin/unified-sync/start'?'실행 중...':`선택 ${scopes.length}개 실행`} disabled={!!busy||!scopes.length||!!unified?.running} onPress={()=>void runUnified()}/><Button compact tone="danger" title="통합 중지" disabled={!!busy||!unified?.running} onPress={()=>void run('통합 동기화','/api/admin/unified-sync/stop')}/></View>{steps.length?<View style={s.steps}>{steps.map((x:any,i:number)=><View key={x.key||x.scope||i} style={s.step}><Text style={s.stepName}>{x.label||x.name||x.key||x.scope||`단계 ${i+1}`}</Text><Text style={s.stepMeta}>{x.status||'-'} · {Number(x.progress_percent??x.progress??0).toFixed(0)}% {x.message?`· ${x.message}`:''}</Text></View>)}</View>:null}</Card>
+ {jobs.map(j=>{const st=states[j.key]||{};return <Card key={j.key}><SectionTitle title={j.label} hint={st.message||st.stage_label||st.error||'상태 확인 중'}/><View style={s.stats}><Stat label="상태" value={st.running?'실행 중':st.phase||'대기'}/><Stat label="진행" value={`${Number(st.progress_value??st.progress_percent??0).toFixed(0)}%`}/><Stat label="완료" value={`${Number(st.item_completed??st.completed??0).toLocaleString()} / ${Number(st.item_total??st.total??0).toLocaleString()}`}/></View>{st.current_name?<Text style={s.note}>현재 {st.current_name} {st.current_code||''}</Text>:null}{st.last_error?<Text style={s.err}>{st.last_error}</Text>:null}<View style={s.actions}>{j.actions.map(([label,path])=><Button key={path} compact tone={label==='중지'?'danger':'secondary'} disabled={!!busy} title={busy===path?'처리 중...':label} onPress={()=>void run(`${j.label} ${label}`,path)}/>)}</View></Card>})}
+ <Card><SectionTitle title="수급 동기화" hint={states.flow?.message||states.flow?.stage_label||states.flow?.error||'외국인·기관·개인 수급 데이터'}/><View style={s.two}><View style={{flex:1}}><Field label="대상 종목 (0=전체)" keyboardType="number-pad" value={flowLimit} onChangeText={setFlowLimit}/></View><View style={{flex:1}}><Field label="기간(일)" keyboardType="number-pad" value={flowDays} onChangeText={setFlowDays}/></View></View><View style={s.actions}><Button compact tone="secondary" disabled={!!busy} title="수급 시작" onPress={()=>void run('수급 동기화','/api/admin/flow-sync/start',{universe_limit:Number(flowLimit||0),history_days:Number(flowDays||20)})}/><Button compact tone="danger" disabled={!!busy} title="수급 중지" onPress={()=>void run('수급 동기화','/api/admin/flow-sync/stop')}/></View></Card></Screen>
+}
+const s=StyleSheet.create({stats:{flexDirection:'row',flexWrap:'wrap',gap:12},actions:{flexDirection:'row',flexWrap:'wrap',gap:8,marginTop:14},chips:{flexDirection:'row',flexWrap:'wrap',gap:7},two:{flexDirection:'row',gap:10},note:{fontSize:11,color:colors.text2,marginTop:10},err:{fontSize:11,color:colors.danger,lineHeight:17,marginTop:7},steps:{gap:7,marginTop:12},step:{padding:9,borderRadius:10,backgroundColor:colors.surfaceMuted},stepName:{fontSize:11,fontWeight:'800',color:colors.text},stepMeta:{fontSize:10,color:colors.text3,lineHeight:15,marginTop:3}});

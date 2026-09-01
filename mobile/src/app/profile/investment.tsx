@@ -1,0 +1,39 @@
+import { useEffect, useMemo, useState } from 'react';
+import { Alert, StyleSheet, Text, View } from 'react-native';
+import { router } from 'expo-router';
+import * as SecureStore from 'expo-secure-store';
+import { InvestmentQuiz } from '@/components/InvestmentQuiz';
+import { Button, Card, ErrorState, Loading, PageHeader, Screen, SectionTitle } from '@/components/ui';
+import { colors } from '@/constants/theme';
+import { useAuth } from '@/context/AuthContext';
+import { allInvestmentCodes, investmentAxes, investmentTraits, profileCodeTitle, profileNickname } from '@/data/investment';
+import { get, post } from '@/lib/api';
+import { dateTime, errorText } from '@/lib/format';
+
+const DRAFT_KEY='stocklog_investment_profile_draft_v2';
+type Draft={answers:Record<number,string>;index:number};
+
+export default function InvestmentProfile(){
+ const {refreshUser}=useAuth();
+ const [data,setData]=useState<any>(null),[error,setError]=useState(''),[retake,setRetake]=useState(false),[draft,setDraft]=useState<Draft|null>(null),[draftReady,setDraftReady]=useState(false),[saving,setSaving]=useState(false),[showAll,setShowAll]=useState(false);
+ const load=async()=>{try{const r=await get('/api/investment-profile');setData(r);setError('');if(!r?.exists){const raw=await SecureStore.getItemAsync(DRAFT_KEY);if(raw){try{const parsed=JSON.parse(raw);if(parsed?.answers&&Object.keys(parsed.answers).length){setDraft({answers:parsed.answers,index:Number(parsed.index||0)});setRetake(true)}}catch{}}}}catch(e){setError(errorText(e))}finally{setDraftReady(true)}};
+ useEffect(()=>{void load()},[]);
+ const saveDraft=async(next:Draft)=>{setDraft(next);await SecureStore.setItemAsync(DRAFT_KEY,JSON.stringify(next))};
+ const clearDraft=async()=>{setDraft(null);await SecureStore.deleteItemAsync(DRAFT_KEY)};
+ const save=async(result:any)=>{setSaving(true);try{await post('/api/investment-profile',{result_code:result.code,answers:result.serializedAnswers,scores:{version:2,questionnaire:'mixed-30-v1',counts:result.counts,percentages:result.percentages}});await clearDraft();setRetake(false);setShowAll(false);await refreshUser();await load();Alert.alert('저장 완료',`투자성향 ${result.code}로 저장했습니다.`)}catch(e){Alert.alert('저장 실패',errorText(e))}finally{setSaving(false)}};
+ const profile=data?.profile;const code=String(profile?.result_code||'');const percentages=profile?.scores?.percentages||{};
+ const traits=useMemo(()=>code.split('').map((letter:string,index:number)=>({letter,index,...investmentTraits[letter]})),[code]);
+ return <Screen><PageHeader eyebrow="PROFILE" title="투자성향" subtitle="웹과 동일한 30문항 검사, 이어하기, 5축 상세 결과를 제공합니다." right={<Button compact tone="ghost" title="닫기" onPress={()=>router.back()}/>}/>
+ {error?<ErrorState message={error} retry={()=>void load()}/>:!data||!draftReady?<Loading/>:retake||!data.exists?<>
+   {draft&&Object.keys(draft.answers||{}).length?<Card><Text style={s.resume}>저장된 검사 진행상황이 있습니다. {Object.keys(draft.answers).length}/30문항부터 이어서 진행합니다.</Text></Card>:null}
+   <InvestmentQuiz initialAnswers={draft?.answers} initialIndex={draft?.index||0} submitting={saving} onProgress={saveDraft} onReset={clearDraft} onComplete={save}/>
+   {data.exists?<Button title="검사 나가기" tone="ghost" onPress={()=>setRetake(false)}/>:null}
+ </>:<>
+   <Card><SectionTitle title="현재 투자 DNA" hint={`최근 검사 ${dateTime(profile?.updated_at||profile?.completed_at)}`}/><Text style={s.code}>{code}</Text><Text style={s.nickname}>{profileNickname(code)}</Text><Text style={s.desc}>{profileCodeTitle(code)}</Text><Button title="30문항 다시 검사" tone="secondary" onPress={()=>setRetake(true)}/></Card>
+   <View><SectionTitle title="5가지 투자 성향" hint="각 글자의 강점과 주의점을 웹과 동일하게 확인합니다."/>{traits.map((t:any)=><Card key={`${t.letter}-${t.index}`} style={s.trait}><View style={s.traitHead}><Text style={s.letter}>{t.letter}</Text><View style={{flex:1}}><Text style={s.traitAxis}>{investmentAxes[t.index]?.name||''}</Text><Text style={s.traitName}>{t.name||t.letter}</Text></View></View><Text style={s.traitSummary}>{t.summary||''}</Text><View style={s.noteBox}><Text style={s.good}>강점</Text><Text style={s.noteText}>{t.strength||'-'}</Text></View><View style={s.noteBox}><Text style={s.caution}>주의</Text><Text style={s.noteText}>{t.caution||'-'}</Text></View></Card>)}</View>
+   <Card><SectionTitle title="성향 비율" hint="문항 가중점수를 0~100 비율로 환산한 결과"/>{investmentAxes.map(axis=><View key={axis.key} style={s.axis}><Text style={s.axisName}>{axis.name}</Text><Text style={s.axisCaption}>{axis.caption}</Text>{axis.letters.map(letter=>{const value=Number(percentages?.[axis.key]?.[letter]||0);return <View key={letter} style={s.balanceRow}><Text style={s.balanceLabel}>{letter} · {investmentTraits[letter]?.short}</Text><View style={s.track}><View style={[s.fill,{width:`${Math.max(0,Math.min(100,value))}%` as any}]}/></View><Text style={s.balanceValue}>{value}%</Text></View>})}</View>)}</Card>
+   <Card><SectionTitle title="48가지 투자 유형" hint="현재 유형과 다른 조합도 둘러볼 수 있습니다."/><View style={s.typeGrid}>{(showAll?allInvestmentCodes:allInvestmentCodes.slice(0,8)).map(type=><View key={type} style={[s.typeCard,type===code&&s.typeMine]}><Text style={s.typeCode}>{type}</Text><Text style={s.typeName}>{profileNickname(type)}</Text><Text numberOfLines={2} style={s.typeDesc}>{profileCodeTitle(type)}</Text>{type===code?<Text style={s.mine}>MY TYPE</Text>:null}</View>)}</View><Button title={showAll?'유형 접기':'48가지 전체 보기'} tone="ghost" onPress={()=>setShowAll(v=>!v)}/></Card>
+   <Text style={s.disclaimer}>이 결과는 투자 습관을 돌아보기 위한 자기점검용이며 금융회사의 공식 투자자 적합성·적정성 평가가 아닙니다.</Text>
+ </>}</Screen>
+}
+const s=StyleSheet.create({resume:{fontSize:11,lineHeight:18,color:colors.text2},code:{fontSize:38,fontWeight:'900',letterSpacing:5,color:colors.primary},nickname:{fontSize:17,fontWeight:'900',color:colors.text,marginTop:8},desc:{fontSize:11,color:colors.text2,lineHeight:18,marginTop:4,marginBottom:14},trait:{gap:10,marginBottom:8,shadowOpacity:0},traitHead:{flexDirection:'row',alignItems:'center',gap:10},letter:{width:42,height:42,textAlign:'center',textAlignVertical:'center',borderRadius:12,backgroundColor:colors.primarySoft,color:colors.primary,fontSize:22,fontWeight:'900'},traitAxis:{fontSize:9,color:colors.text3,fontWeight:'800'},traitName:{fontSize:14,fontWeight:'900',color:colors.text,marginTop:2},traitSummary:{fontSize:11,lineHeight:17,color:colors.text2},noteBox:{padding:10,borderRadius:10,backgroundColor:colors.surfaceMuted},good:{fontSize:10,fontWeight:'900',color:colors.positive},caution:{fontSize:10,fontWeight:'900',color:colors.warning||colors.text2},noteText:{fontSize:10,lineHeight:16,color:colors.text2,marginTop:4},axis:{paddingVertical:11,borderBottomWidth:1,borderBottomColor:colors.border},axisName:{fontSize:12,fontWeight:'900',color:colors.text},axisCaption:{fontSize:9,color:colors.text3,marginTop:2,marginBottom:8},balanceRow:{flexDirection:'row',alignItems:'center',gap:8,marginTop:6},balanceLabel:{width:78,fontSize:10,fontWeight:'700',color:colors.text2},track:{flex:1,height:6,borderRadius:999,backgroundColor:colors.surfaceMuted,overflow:'hidden'},fill:{height:6,borderRadius:999,backgroundColor:colors.primary},balanceValue:{width:34,textAlign:'right',fontSize:10,fontWeight:'900',color:colors.text2},typeGrid:{flexDirection:'row',flexWrap:'wrap',gap:8,marginBottom:12},typeCard:{width:'48.5%',padding:11,borderWidth:1,borderColor:colors.border,borderRadius:12,backgroundColor:colors.surfaceMuted},typeMine:{borderColor:colors.primary,backgroundColor:colors.primarySoft},typeCode:{fontSize:14,fontWeight:'900',color:colors.primary},typeName:{fontSize:10,fontWeight:'800',color:colors.text,marginTop:4},typeDesc:{fontSize:9,lineHeight:14,color:colors.text3,marginTop:3},mine:{fontSize:8,fontWeight:'900',color:colors.primary,marginTop:5},disclaimer:{fontSize:9,lineHeight:15,color:colors.text3,paddingHorizontal:4}})

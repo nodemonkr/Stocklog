@@ -1,0 +1,11 @@
+StockLog synchronization diagnostic log
+created_at_kst=2026-08-30T23:36:13.965801+09:00
+kind=frontend
+run_id=web-mtfwwl3w-j607lm
+pid=527398
+metadata={"source": "frontend", "admin_user_id": 1, "url": "/api/admin/sync-overview", "method": "GET", "status": null}
+NOTE=Secrets/tokens/passwords/account numbers are masked before writing.
+
+[2026-08-30T23:36:13.973613+09:00] [ERROR] ADMIN_SYNC_API_ERROR
+details={"message": "timeout of 8000ms exceeded", "stack": "AxiosError: timeout of 8000ms exceeded\n    at _.ontimeout (https://www.stocklog.cloud/assets/index-D8xZH5VZ.js:49:6297)", "url": "/api/admin/sync-overview", "method": "GET", "status": null, "request_id": "web-mtfwwl3w-j607lm", "context": {"url": "/api/admin/sync-overview", "method": "get", "phase": "axios_interceptor", "dedupe_window_ms": 60000, "browser_url": "https://www.stocklog.cloud/?page=admin", "response": ""}}
+

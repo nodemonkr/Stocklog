@@ -1,0 +1,24 @@
+import { useEffect, useState } from 'react';
+import { router } from 'expo-router';
+import * as WebBrowser from 'expo-web-browser';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Button, Card, Chip, Field, Screen } from '@/components/ui';
+import { colors } from '@/constants/theme';
+import { useAuth } from '@/context/AuthContext';
+import { get, post } from '@/lib/api';
+import * as SecureStore from 'expo-secure-store';
+
+WebBrowser.maybeCompleteAuthSession();
+const RETURN_URL='stocklog://auth';
+const PENDING_SOCIAL='stocklog_pending_social_v1';
+
+export default function LoginScreen(){
+ const {login,acceptAuth,user}=useAuth();
+ const [username,setUsername]=useState(''),[password,setPassword]=useState(''),[busy,setBusy]=useState(false),[error,setError]=useState(''),[providers,setProviders]=useState<any>({}),[adminMode,setAdminMode]=useState(false);
+ useEffect(()=>{if(user)router.replace('/(tabs)')},[user]);
+ useEffect(()=>{get('/api/auth/social/providers',undefined,false).then(setProviders).catch(()=>{})},[]);
+ const submit=async()=>{if(!username.trim()||!password){setError('아이디와 비밀번호를 입력해주세요.');return}setBusy(true);setError('');try{if(adminMode){const payload=await post<any>('/api/auth/admin-login',{username:username.trim(),password},false);await acceptAuth(payload)}else await login(username.trim(),password);router.replace('/(tabs)')}catch(e:any){setError(e.message||(adminMode?'관리자 로그인에 실패했습니다.':'로그인에 실패했습니다.'))}finally{setBusy(false)}};
+ const social=async(provider:string)=>{setBusy(true);setError('');try{const start=await get<any>(`/api/auth/social/${provider}/start`,{return_url:RETURN_URL},false);const result=await WebBrowser.openAuthSessionAsync(start.authorization_url,RETURN_URL,{showInRecents:true});if(result.type!=='success'||!result.url)return;const url=new URL(result.url),session=url.searchParams.get('social_session');if(!session)throw new Error('소셜 로그인 세션을 확인하지 못했습니다.');const exchange=await post<any>('/api/auth/social/exchange',{session_id:session},false);if(exchange.token){await acceptAuth(exchange);router.replace('/(tabs)');return}if(exchange.needs_profile){await SecureStore.setItemAsync(PENDING_SOCIAL,JSON.stringify(exchange));router.push('/social-complete');return}throw new Error('소셜 로그인 결과를 확인하지 못했습니다.')}catch(e:any){setError(e.message||'소셜 로그인에 실패했습니다.')}finally{setBusy(false)}};
+ return <Screen contentStyle={styles.content}><View style={styles.hero}><View style={styles.logo}><Text style={styles.logoText}>S</Text></View><Text style={styles.brand}>StockLog</Text><Text style={styles.caption}>투자 분석과 모의투자를 모바일에서 간결하게.</Text></View><Card style={{gap:12}}><View style={styles.titleRow}><Text style={styles.loginTitle}>{adminMode?'관리자 로그인':'로그인'}</Text><View style={{flexDirection:'row',gap:6}}><Chip label="회원" active={!adminMode} onPress={()=>{setAdminMode(false);setError('')}}/><Chip label="관리자" active={adminMode} onPress={()=>{setAdminMode(true);setError('')}}/></View></View><Field label="아이디" value={username} onChangeText={setUsername} autoCapitalize="none" placeholder="StockLog 아이디"/><Field label="비밀번호" value={password} onChangeText={setPassword} secureTextEntry placeholder="비밀번호"/>{error?<Text style={styles.error}>{error}</Text>:null}<Button title={busy?'처리 중...':adminMode?'관리자 로그인':'로그인'} disabled={busy} onPress={submit}/>{!adminMode?<Pressable onPress={()=>router.push('/register')}><Text style={styles.join}>계정이 없나요? <Text style={{color:colors.primary,fontWeight:'900'}}>회원가입</Text></Text></Pressable>:<Text style={styles.adminNote}>관리자 전용 인증 경로를 사용합니다.</Text>}</Card>{!adminMode&&Object.entries(providers).some(([,v]:any)=>v?.available)?<Card><Text style={styles.socialTitle}>소셜 계정으로 계속하기</Text><View style={{gap:8,marginTop:10}}>{Object.entries(providers).filter(([,v]:any)=>v?.available).map(([key,v]:any)=><Button key={key} title={`${v.label}로 로그인`} tone="secondary" disabled={busy} onPress={()=>void social(key)}/>)}</View></Card>:null}<Text style={styles.server}>앱은 StockLog 백엔드 서버와 직접 통신합니다.</Text></Screen>;
+}
+const styles=StyleSheet.create({content:{justifyContent:'center',minHeight:'100%' as any},hero:{alignItems:'center',paddingVertical:18},logo:{width:56,height:56,borderRadius:18,alignItems:'center',justifyContent:'center',backgroundColor:colors.navy},logoText:{color:'#fff',fontSize:28,fontWeight:'900'},brand:{fontSize:29,fontWeight:'900',color:colors.text,marginTop:10},caption:{fontSize:12,color:colors.text3,marginTop:5},titleRow:{flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:8},loginTitle:{fontSize:19,fontWeight:'800',color:colors.text},error:{fontSize:12,color:colors.danger,lineHeight:18},join:{textAlign:'center',fontSize:12,color:colors.text2,paddingVertical:5},socialTitle:{fontWeight:'800',color:colors.text2,fontSize:13},server:{textAlign:'center',fontSize:10,color:colors.text3},adminNote:{textAlign:'center',fontSize:10,color:colors.text3}});

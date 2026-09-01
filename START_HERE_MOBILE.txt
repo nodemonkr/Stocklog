@@ -1,0 +1,26 @@
+StockLog Native Mobile 3.77.0
+================================
+
+이 버전은 WebView로 웹 화면을 표시하지 않습니다.
+모든 주요 화면은 React Native / Expo Router 네이티브 UI이며 StockLog FastAPI 백엔드와 API로 직접 통신합니다.
+
+기본 실행/빌드:
+  cd /home/conda/Stocklog
+  ./restart-mobile.sh
+
+기본 profile은 preview이며 설치 가능한 standalone APK를 EAS Cloud에서 만듭니다.
+설치 후 Expo Go, Metro, QR 스캔, Android Studio, adb가 필요하지 않습니다.
+
+서버 구조:
+- 실제 FastAPI 백엔드 프로세스: 8100
+- 앱 1순위 API: http://somensomes.iptime.org:8100
+- fallback: http://somensomes.iptime.org:3000 (기존 웹 프록시)
+
+앱에서 8100으로 직접 접속하려면 공유기/방화벽에서 외부 8100 -> StockLog 서버 8100이 접근 가능해야 합니다.
+직접 연결이 네트워크 단계에서 실패하면 앱 API 모듈이 3000 fallback을 사용합니다.
+
+검증만 하고 EAS 빌드를 생략:
+  ./restart-mobile.sh --skip-build
+
+서버 재시작 없이 모바일만 검증/빌드:
+  ./restart-mobile.sh --skip-servers

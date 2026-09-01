@@ -1,0 +1,42 @@
+{
+  "cli": {
+    "version": ">= 22.4.0",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "environment": "development",
+      "env": {
+        "EXPO_PUBLIC_API_URL": "http://somensomes.iptime.org:8100",
+        "EXPO_PUBLIC_API_FALLBACK_URL": "http://somensomes.iptime.org:3000",
+        "EXPO_PUBLIC_ALLOW_HTTP": "true"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "environment": "preview",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_URL": "http://somensomes.iptime.org:8100",
+        "EXPO_PUBLIC_API_FALLBACK_URL": "http://somensomes.iptime.org:3000",
+        "EXPO_PUBLIC_ALLOW_HTTP": "true"
+      }
+    },
+    "production": {
+      "environment": "production",
+      "autoIncrement": true,
+      "env": {
+        "EXPO_PUBLIC_API_URL": "http://somensomes.iptime.org:8100",
+        "EXPO_PUBLIC_API_FALLBACK_URL": "http://somensomes.iptime.org:3000",
+        "EXPO_PUBLIC_ALLOW_HTTP": "true"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

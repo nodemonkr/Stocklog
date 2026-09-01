@@ -1,0 +1,14 @@
+StockLog synchronization diagnostic log
+created_at_kst=2026-08-30T01:24:22.292881+09:00
+kind=investor-flow
+run_id=flow-1-1788020662292867311
+pid=470391
+metadata={"requested_by_user_id": 1, "universe_limit": 0, "history_days": 20}
+NOTE=Secrets/tokens/passwords/account numbers are masked before writing.
+
+[2026-08-30T01:24:22.295483+09:00] [INFO] FLOW_SYNC_START
+details={"universe_limit": 0, "history_days": 20}
+
+[2026-08-30T01:24:22.410397+09:00] [INFO] FLOW_SYNC_SCOPE_RESOLVED
+details={"eligible_total": 2525, "selected_total": 2525, "outside_selection": 0}
+

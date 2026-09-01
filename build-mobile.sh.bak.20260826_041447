@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROFILE="${1:-preview}"
+
+case "$PROFILE" in
+  development|preview|production) ;;
+  *) echo "Usage: $0 [development|preview|production]" >&2; exit 2 ;;
+esac
+
+if [ -x "$ROOT_DIR/frontend/node_modules/.bin/vite" ]; then
+  echo "[StockLog] Building current web frontend..."
+  (cd "$ROOT_DIR/frontend" && npm run build)
+else
+  echo "[StockLog] frontend/node_modules is not installed; using existing frontend/dist."
+  echo "[StockLog] Run 'cd frontend && npm install && npm run build' after frontend source changes."
+fi
+
+if [ ! -f "$ROOT_DIR/frontend/dist/index.html" ]; then
+  echo "[StockLog] frontend/dist/index.html is missing." >&2
+  exit 1
+fi
+
+cd "$ROOT_DIR/mobile"
+if [ ! -d node_modules/react-native-webview ] || [ ! -d node_modules/expo-build-properties ]; then
+  echo "[StockLog] Installing mobile dependencies..."
+  npm install
+fi
+
+npm run sync:web
+npx expo-doctor@latest
+
+echo "[StockLog] Starting EAS Android build: profile=$PROFILE"
+if command -v eas >/dev/null 2>&1; then
+  eas build --platform android --profile "$PROFILE"
+else
+  npx --yes eas-cli@latest build --platform android --profile "$PROFILE"
+fi

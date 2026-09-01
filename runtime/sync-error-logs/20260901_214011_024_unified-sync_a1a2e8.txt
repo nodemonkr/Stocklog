@@ -1,0 +1,125 @@
+StockLog synchronization diagnostic log
+created_at_kst=2026-09-01T21:40:11.024221+09:00
+kind=unified-sync
+run_id=schedule-1-1788266411024215032
+pid=695467
+metadata={"admin_id": 1, "trigger": "schedule", "scheduled_slot": "2026-09-01@21:40", "requested_scopes": ["kiwoom", "dart", "kiwoom_themes", "market_themes", "classification", "theme_engine", "flow", "smart_scores"]}
+NOTE=Secrets/tokens/passwords/account numbers are masked before writing.
+
+[2026-09-01T21:40:11.029920+09:00] [INFO] UNIFIED_SYNC_START
+details={"trigger": "schedule", "selected_scopes": ["kiwoom", "dart", "kiwoom_themes", "market_themes", "classification", "theme_engine", "flow", "smart_scores"], "flow_universe_limit": 800, "flow_history_days": 20}
+
+[2026-09-01T21:40:11.052396+09:00] [INFO] UNIFIED_KIWOOM_STAGE_START
+details={}
+
+[2026-09-01T21:40:11.052745+09:00] [INFO] MARKET_DATA_SYNC_WAIT_LOCK
+details={"mode": "kiwoom"}
+
+[2026-09-01T21:40:11.053063+09:00] [INFO] MARKET_DATA_SYNC_LOCK_ACQUIRED
+details={"mode": "kiwoom"}
+
+[2026-09-01T21:40:11.066981+09:00] [INFO] KIWOOM_RUNTIME_VALIDATE_START
+details={}
+
+[2026-09-01T21:40:11.067423+09:00] [INFO] KIWOOM_RUNTIME_VALIDATE_DONE
+details={}
+
+[2026-09-01T21:40:11.067791+09:00] [INFO] KIWOOM_ADMIN_LOAD_START
+details={"admin_id": 1}
+
+[2026-09-01T21:40:11.073755+09:00] [INFO] KIWOOM_ADMIN_LOAD_DONE
+details={"use_mock": true, "token_cached": true, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:40:06.381235+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 82013.9, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T21:40:11.074494+09:00] [INFO] KIWOOM_TOKEN_START
+details={"kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:40:06.381235+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 82013.9, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T21:40:11.075179+09:00] [INFO] KIWOOM_TOKEN_READY
+details={"cached": true, "elapsed_seconds": 0.0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:40:06.381235+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 82013.9, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T21:40:11.075836+09:00] [INFO] KIWOOM_UNIVERSE_START
+details={"kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:40:06.381235+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 82013.9, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T21:40:11.088322+09:00] [INFO] UNIVERSE_KOSPI_START
+details={"market_type": "0", "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:40:06.381235+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 82013.9, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T21:40:11.286875+09:00] [INFO] UNIVERSE_KOSPI_DONE
+details={"rows": 2154, "elapsed_seconds": 0.198, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:40:11.257839+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 82013.7, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T21:40:11.293391+09:00] [INFO] UNIVERSE_KOSDAQ_START
+details={"market_type": "10", "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:40:11.257839+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 82013.7, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T21:40:12.325930+09:00] [INFO] UNIVERSE_KOSDAQ_DONE
+details={"rows": 1770, "elapsed_seconds": 1.032, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:40:12.295460+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 82012.7, "queued": 1, "gate_active_api_id": "ka10076", "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T21:40:12.326630+09:00] [INFO] UNIVERSE_KIND_START
+details={"kiwoom_rows": 3924}
+
+[2026-09-01T21:40:14.976679+09:00] [INFO] UNIVERSE_KIND_DONE
+details={"kind_rows": 2616, "merged_rows": 3945, "elapsed_seconds": 2.65}
+
+[2026-09-01T21:40:17.204047+09:00] [INFO] KIWOOM_UNIVERSE_DONE
+details={"stocks": 2524, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:40:14.944660+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 82007.8, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T21:40:17.209411+09:00] [INFO] KIWOOM_INDEX_START
+details={"api_id": "ka20006", "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:40:14.944660+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 82007.8, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T21:40:18.577933+09:00] [INFO] KIWOOM_INDEX_DONE
+details={"outcome": "ok", "retries": 0, "elapsed_seconds": 1.368, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:40:18.539200+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 82006.4, "queued": 1, "gate_active_api_id": "ka10076", "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T21:40:18.986427+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 1, "total": 2524, "current_code": "000020", "current_name": "동화약품", "success": 1, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:40:18.906905+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 82006.0, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T21:42:08.333589+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 100, "total": 2524, "current_code": "002620", "current_name": "제일파마홀딩스", "success": 100, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:42:08.265334+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 81896.7, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T21:44:01.600671+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 200, "total": 2524, "current_code": "005250", "current_name": "녹십자홀딩스", "success": 200, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:44:01.509284+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 81783.4, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T21:46:15.024943+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 300, "total": 2524, "current_code": "009460", "current_name": "한창제지", "success": 300, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:46:14.964481+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 81650.0, "queued": 1, "gate_active_api_id": "ka10170", "gate_active_seconds": 0.1, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T21:48:13.333924+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 400, "total": 2524, "current_code": "017040", "current_name": "광명전기", "success": 400, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:48:13.265755+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 81531.7, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T21:50:15.177974+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 500, "total": 2524, "current_code": "035720", "current_name": "카카오", "success": 500, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:50:15.022378+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 81409.8, "queued": 1, "gate_active_api_id": "ka10076", "gate_active_seconds": 0.2, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T21:52:10.820166+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 600, "total": 2524, "current_code": "091810", "current_name": "트리니티항공", "success": 600, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:52:10.739811+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 81294.2, "queued": 1, "gate_active_api_id": "ka10085", "gate_active_seconds": 0.1, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T21:54:04.470689+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 700, "total": 2524, "current_code": "227840", "current_name": "현대코퍼레이션홀딩스", "success": 700, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:54:04.402405+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 81180.5, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T21:55:57.305227+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 800, "total": 2524, "current_code": "900310", "current_name": "컬러레이", "success": 800, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:55:57.242313+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 81067.7, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T21:57:48.905546+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 900, "total": 2524, "current_code": "019550", "current_name": "SBI인베스트먼트", "success": 900, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:57:48.850720+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 80956.1, "queued": 1, "gate_active_api_id": "ka10075", "gate_active_seconds": 0.1, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T21:59:48.423580+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 1000, "total": 2524, "current_code": "034950", "current_name": "한국기업평가", "success": 1000, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T12:59:48.340184+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 80836.6, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T22:01:42.042582+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 1100, "total": 2524, "current_code": "042420", "current_name": "네오위즈홀딩스", "success": 1100, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T13:01:41.975170+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 80723.0, "queued": 1, "gate_active_api_id": "ka10075", "gate_active_seconds": 0.1, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T22:03:37.823423+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 1200, "total": 2524, "current_code": "052790", "current_name": "액토즈소프트", "success": 1200, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T13:03:37.706887+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 80607.2, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T22:05:28.741612+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 1300, "total": 2524, "current_code": "065130", "current_name": "탑엔지니어링", "success": 1300, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T13:05:28.682108+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 80496.3, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T22:07:25.020643+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 1400, "total": 2524, "current_code": "078600", "current_name": "대주전자재료", "success": 1400, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T13:07:24.948990+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 80380.0, "queued": 1, "gate_active_api_id": "ka10076", "gate_active_seconds": 0.1, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T22:09:21.634342+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 1500, "total": 2524, "current_code": "092070", "current_name": "디엔에프", "success": 1500, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T13:09:21.566352+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 80263.4, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T22:11:13.357702+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 1600, "total": 2524, "current_code": "108860", "current_name": "셀바스AI", "success": 1600, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T13:11:13.273028+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 80151.6, "queued": 1, "gate_active_api_id": "ka10085", "gate_active_seconds": 0.1, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T22:13:05.484697+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 1700, "total": 2524, "current_code": "137950", "current_name": "제이씨케미칼", "success": 1700, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T13:13:05.411473+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 80039.5, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T22:15:00.837349+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 1800, "total": 2524, "current_code": "189980", "current_name": "흥국에프엔비", "success": 1800, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-09-01T13:15:00.731358+00:00", "token_cached": true, "token_expires_dt": "20260902203205", "token_valid_seconds": 79924.2, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+

@@ -1,0 +1,241 @@
+StockLog synchronization diagnostic log
+created_at_kst=2026-08-31T01:49:16.567482+09:00
+kind=investor-flow
+run_id=flow-1-1788108556567477962
+pid=527398
+metadata={"requested_by_user_id": 1, "universe_limit": 0, "history_days": 20}
+NOTE=Secrets/tokens/passwords/account numbers are masked before writing.
+
+[2026-08-31T01:49:16.568331+09:00] [INFO] FLOW_SYNC_START
+details={"universe_limit": 0, "history_days": 20}
+
+[2026-08-31T01:49:16.615066+09:00] [INFO] FLOW_SYNC_SCOPE_RESOLVED
+details={"eligible_total": 2525, "selected_total": 2525, "outside_selection": 0}
+
+[2026-08-31T02:34:33.324943+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10060 투자자 수급 이력 데이터가 없습니다."}
+exception_type=KiwoomError
+exception=ka10060 투자자 수급 이력 데이터가 없습니다.
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 8553, in _fetch_flow_with_retry
+    payload=await cli.stock_investor_history(stock_code,request_date,history_days)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 1041, in stock_investor_history
+    raise KiwoomError("ka10060 투자자 수급 이력 데이터가 없습니다.")
+app.kiwoom.KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다.
+
+
+[2026-08-31T02:34:33.327308+09:00] [WARNING] FLOW_PROVIDER_NO_DATA
+details={"code": "000010", "name": "덕양에너젠", "kind": "provider_no_data", "date": "20260831", "retries": 0, "error": "KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다."}
+exception_type=KiwoomError
+exception=ka10060 투자자 수급 이력 데이터가 없습니다.
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 8553, in _fetch_flow_with_retry
+    payload=await cli.stock_investor_history(stock_code,request_date,history_days)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 1041, in stock_investor_history
+    raise KiwoomError("ka10060 투자자 수급 이력 데이터가 없습니다.")
+app.kiwoom.KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다.
+
+
+[2026-08-31T02:34:34.386594+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10060 투자자 수급 이력 데이터가 없습니다."}
+exception_type=KiwoomError
+exception=ka10060 투자자 수급 이력 데이터가 없습니다.
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 8553, in _fetch_flow_with_retry
+    payload=await cli.stock_investor_history(stock_code,request_date,history_days)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 1041, in stock_investor_history
+    raise KiwoomError("ka10060 투자자 수급 이력 데이터가 없습니다.")
+app.kiwoom.KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다.
+
+
+[2026-08-31T02:34:34.387449+09:00] [WARNING] FLOW_PROVIDER_NO_DATA
+details={"code": "000090", "name": "에임드바이오", "kind": "provider_no_data", "date": "20260831", "retries": 0, "error": "KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다."}
+exception_type=KiwoomError
+exception=ka10060 투자자 수급 이력 데이터가 없습니다.
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 8553, in _fetch_flow_with_retry
+    payload=await cli.stock_investor_history(stock_code,request_date,history_days)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 1041, in stock_investor_history
+    raise KiwoomError("ka10060 투자자 수급 이력 데이터가 없습니다.")
+app.kiwoom.KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다.
+
+
+[2026-08-31T02:34:35.474369+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10060 투자자 수급 이력 데이터가 없습니다."}
+exception_type=KiwoomError
+exception=ka10060 투자자 수급 이력 데이터가 없습니다.
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 8553, in _fetch_flow_with_retry
+    payload=await cli.stock_investor_history(stock_code,request_date,history_days)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 1041, in stock_investor_history
+    raise KiwoomError("ka10060 투자자 수급 이력 데이터가 없습니다.")
+app.kiwoom.KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다.
+
+
+[2026-08-31T02:34:35.475165+09:00] [WARNING] FLOW_PROVIDER_NO_DATA
+details={"code": "000110", "name": "채비", "kind": "provider_no_data", "date": "20260831", "retries": 0, "error": "KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다."}
+exception_type=KiwoomError
+exception=ka10060 투자자 수급 이력 데이터가 없습니다.
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 8553, in _fetch_flow_with_retry
+    payload=await cli.stock_investor_history(stock_code,request_date,history_days)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 1041, in stock_investor_history
+    raise KiwoomError("ka10060 투자자 수급 이력 데이터가 없습니다.")
+app.kiwoom.KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다.
+
+
+[2026-08-31T02:34:36.559832+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10060 투자자 수급 이력 데이터가 없습니다."}
+exception_type=KiwoomError
+exception=ka10060 투자자 수급 이력 데이터가 없습니다.
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 8553, in _fetch_flow_with_retry
+    payload=await cli.stock_investor_history(stock_code,request_date,history_days)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 1041, in stock_investor_history
+    raise KiwoomError("ka10060 투자자 수급 이력 데이터가 없습니다.")
+app.kiwoom.KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다.
+
+
+[2026-08-31T02:34:36.560627+09:00] [WARNING] FLOW_PROVIDER_NO_DATA
+details={"code": "000130", "name": "삼진식품", "kind": "provider_no_data", "date": "20260831", "retries": 0, "error": "KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다."}
+exception_type=KiwoomError
+exception=ka10060 투자자 수급 이력 데이터가 없습니다.
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 8553, in _fetch_flow_with_retry
+    payload=await cli.stock_investor_history(stock_code,request_date,history_days)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 1041, in stock_investor_history
+    raise KiwoomError("ka10060 투자자 수급 이력 데이터가 없습니다.")
+app.kiwoom.KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다.
+
+
+[2026-08-31T02:34:37.647307+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10060 투자자 수급 이력 데이터가 없습니다."}
+exception_type=KiwoomError
+exception=ka10060 투자자 수급 이력 데이터가 없습니다.
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 8553, in _fetch_flow_with_retry
+    payload=await cli.stock_investor_history(stock_code,request_date,history_days)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 1041, in stock_investor_history
+    raise KiwoomError("ka10060 투자자 수급 이력 데이터가 없습니다.")
+app.kiwoom.KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다.
+
+
+[2026-08-31T02:34:37.649632+09:00] [WARNING] FLOW_PROVIDER_NO_DATA
+details={"code": "000170", "name": "세미티에스", "kind": "provider_no_data", "date": "20260831", "retries": 0, "error": "KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다."}
+exception_type=KiwoomError
+exception=ka10060 투자자 수급 이력 데이터가 없습니다.
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 8553, in _fetch_flow_with_retry
+    payload=await cli.stock_investor_history(stock_code,request_date,history_days)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 1041, in stock_investor_history
+    raise KiwoomError("ka10060 투자자 수급 이력 데이터가 없습니다.")
+app.kiwoom.KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다.
+
+
+[2026-08-31T02:34:38.726490+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10060 투자자 수급 이력 데이터가 없습니다."}
+exception_type=KiwoomError
+exception=ka10060 투자자 수급 이력 데이터가 없습니다.
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 8553, in _fetch_flow_with_retry
+    payload=await cli.stock_investor_history(stock_code,request_date,history_days)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 1041, in stock_investor_history
+    raise KiwoomError("ka10060 투자자 수급 이력 데이터가 없습니다.")
+app.kiwoom.KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다.
+
+
+[2026-08-31T02:34:38.729098+09:00] [WARNING] FLOW_PROVIDER_NO_DATA
+details={"code": "000820", "name": "카나프테라퓨틱스", "kind": "provider_no_data", "date": "20260831", "retries": 0, "error": "KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다."}
+exception_type=KiwoomError
+exception=ka10060 투자자 수급 이력 데이터가 없습니다.
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 8553, in _fetch_flow_with_retry
+    payload=await cli.stock_investor_history(stock_code,request_date,history_days)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 1041, in stock_investor_history
+    raise KiwoomError("ka10060 투자자 수급 이력 데이터가 없습니다.")
+app.kiwoom.KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다.
+
+
+[2026-08-31T02:34:39.791014+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10060 투자자 수급 이력 데이터가 없습니다."}
+exception_type=KiwoomError
+exception=ka10060 투자자 수급 이력 데이터가 없습니다.
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 8553, in _fetch_flow_with_retry
+    payload=await cli.stock_investor_history(stock_code,request_date,history_days)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 1041, in stock_investor_history
+    raise KiwoomError("ka10060 투자자 수급 이력 데이터가 없습니다.")
+app.kiwoom.KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다.
+
+
+[2026-08-31T02:34:39.791823+09:00] [WARNING] FLOW_PROVIDER_NO_DATA
+details={"code": "001170", "name": "피스피스스튜디오", "kind": "provider_no_data", "date": "20260831", "retries": 0, "error": "KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다."}
+exception_type=KiwoomError
+exception=ka10060 투자자 수급 이력 데이터가 없습니다.
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 8553, in _fetch_flow_with_retry
+    payload=await cli.stock_investor_history(stock_code,request_date,history_days)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 1041, in stock_investor_history
+    raise KiwoomError("ka10060 투자자 수급 이력 데이터가 없습니다.")
+app.kiwoom.KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다.
+
+
+[2026-08-31T02:34:40.867445+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10060 투자자 수급 이력 데이터가 없습니다."}
+exception_type=KiwoomError
+exception=ka10060 투자자 수급 이력 데이터가 없습니다.
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 8553, in _fetch_flow_with_retry
+    payload=await cli.stock_investor_history(stock_code,request_date,history_days)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 1041, in stock_investor_history
+    raise KiwoomError("ka10060 투자자 수급 이력 데이터가 없습니다.")
+app.kiwoom.KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다.
+
+
+[2026-08-31T02:34:40.868201+09:00] [WARNING] FLOW_PROVIDER_NO_DATA
+details={"code": "002180", "name": "네오뷰", "kind": "provider_no_data", "date": "20260831", "retries": 0, "error": "KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다."}
+exception_type=KiwoomError
+exception=ka10060 투자자 수급 이력 데이터가 없습니다.
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 8553, in _fetch_flow_with_retry
+    payload=await cli.stock_investor_history(stock_code,request_date,history_days)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 1041, in stock_investor_history
+    raise KiwoomError("ka10060 투자자 수급 이력 데이터가 없습니다.")
+app.kiwoom.KiwoomError: ka10060 투자자 수급 이력 데이터가 없습니다.
+
+
+[2026-08-31T02:34:49.958770+09:00] [INFO] FLOW_SYNC_FINISH
+details={"phase": "partial", "success": 2517, "failed": 0, "missing_data": 8, "deferred": 0, "cached_when_provider_empty": 0, "selected_total": 2525, "eligible_total": 2525, "selected_coverage_percent": 99.68}
+

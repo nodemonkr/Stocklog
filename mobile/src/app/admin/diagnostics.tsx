@@ -1,0 +1,20 @@
+import { useEffect, useState } from 'react';
+import { Alert, Share, StyleSheet, Text, View } from 'react-native';
+import { router } from 'expo-router';
+import * as FileSystem from 'expo-file-system/legacy';
+import * as Sharing from 'expo-sharing';
+import { Button, Card, Empty, ErrorState, Loading, PageHeader, Screen, SectionTitle } from '@/components/ui';
+import { colors } from '@/constants/theme';
+import { currentApiOrigin, get, getToken } from '@/lib/api';
+import { dateTime, errorText } from '@/lib/format';
+
+export default function Diagnostics(){
+ const [items,setItems]=useState<any[]>([]),[error,setError]=useState(''),[loading,setLoading]=useState(true),[busy,setBusy]=useState('');
+ const load=async()=>{setLoading(true);try{const r=await get<any>('/api/admin/sync-error-logs',{limit:120});setItems(r?.items||[]);setError('')}catch(e){setError(errorText(e))}finally{setLoading(false)}};
+ useEffect(()=>{void load()},[]);
+ const shareOne=async(name:string)=>{setBusy(name);try{const text=await get<any>(`/api/admin/sync-error-logs/${encodeURIComponent(name)}`);await Share.share({title:name,message:`${name}\n\n${typeof text==='string'?text:JSON.stringify(text,null,2)}`})}catch(e){Alert.alert('로그 열기 실패',errorText(e))}finally{setBusy('')}};
+ const shareRecent=async()=>{setBusy('__recent');try{const selected=items.slice(0,12),parts:string[]=[];for(const x of selected){const name=String(x.filename||x.name||'');if(!name)continue;try{const text=await get<any>(`/api/admin/sync-error-logs/${encodeURIComponent(name)}`);parts.push(`===== ${name} =====\n${typeof text==='string'?text:JSON.stringify(text,null,2)}`)}catch{}}await Share.share({title:'StockLog 동기화 진단 로그',message:parts.join('\n\n')||'공유할 로그가 없습니다.'})}catch(e){Alert.alert('공유 실패',errorText(e))}finally{setBusy('')}};
+ const downloadAll=async()=>{setBusy('__zip');try{const available=await Sharing.isAvailableAsync();if(!available)throw new Error('이 기기에서는 파일 공유 기능을 사용할 수 없습니다.');const token=await getToken();if(!token)throw new Error('관리자 로그인 토큰이 없습니다.');const base=FileSystem.cacheDirectory||FileSystem.documentDirectory;if(!base)throw new Error('앱 저장소를 사용할 수 없습니다.');const uri=`${base}stocklog-sync-diagnostics-${Date.now()}.zip`;const r=await FileSystem.downloadAsync(`${currentApiOrigin()}/api/admin/sync-error-logs/download-all`,uri,{headers:{Authorization:`Bearer ${token}`}});if(r.status<200||r.status>=300)throw new Error(`ZIP 다운로드 실패 (HTTP ${r.status})`);await Sharing.shareAsync(r.uri,{mimeType:'application/zip',dialogTitle:'StockLog 진단 로그 ZIP',UTI:'public.zip-archive'})}catch(e){Alert.alert('ZIP 다운로드 실패',errorText(e))}finally{setBusy('')}};
+ return <Screen><PageHeader eyebrow="ADMIN / DIAGNOSTICS" title="동기화 진단 로그" subtitle="서버 진단 TXT를 조회하고 웹과 동일한 전체 ZIP 묶음도 저장·공유합니다." right={<Button compact tone="ghost" title="닫기" onPress={()=>router.back()}/>}/><Card><SectionTitle title="오류·경고 로그" hint="서버가 토큰·비밀번호·API 키·계좌번호를 마스킹한 진단 로그입니다."/><View style={s.actions}><Button compact tone="secondary" title="새로고침" disabled={!!busy} onPress={()=>void load()}/><Button compact tone="secondary" title="최근 로그 텍스트 공유" disabled={!!busy||!items.length} onPress={()=>void shareRecent()}/><Button compact title={busy==='__zip'?'ZIP 준비 중...':'전체 ZIP 다운로드 / 공유'} disabled={!!busy||!items.length} onPress={()=>void downloadAll()}/></View></Card>{error?<ErrorState message={error} retry={()=>void load()}/>:loading?<Loading/>:!items.length?<Empty title="저장된 진단 로그가 없습니다."/>:items.map((x:any,i:number)=>{const name=String(x.filename||x.name||`log-${i}`);return <Card key={name}><Text style={s.name}>{name}</Text><Text style={s.meta}>{dateTime(x.modified_at||x.created_at||x.timestamp)} · {Number(x.size||x.size_bytes||0).toLocaleString()} bytes</Text>{x.event?<Text style={s.desc}>{x.event}</Text>:null}<Button compact tone="secondary" title={busy===name?'불러오는 중...':'내용 열기 / 공유'} disabled={!!busy} onPress={()=>void shareOne(name)}/></Card>})}</Screen>;
+}
+const s=StyleSheet.create({actions:{gap:8},name:{fontSize:12,fontWeight:'900',color:colors.text},meta:{fontSize:10,color:colors.text3,marginTop:5},desc:{fontSize:11,color:colors.text2,lineHeight:17,marginTop:7}});

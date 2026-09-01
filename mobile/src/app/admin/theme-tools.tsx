@@ -1,0 +1,18 @@
+import { useEffect, useState } from 'react';
+import { Alert, StyleSheet, Text, View } from 'react-native';
+import { router } from 'expo-router';
+import { Button, Card, Field, PageHeader, Screen, SectionTitle, Stat } from '@/components/ui';
+import { colors } from '@/constants/theme';
+import { get, post } from '@/lib/api';
+import { errorText } from '@/lib/format';
+
+export default function ThemeTools(){
+ const [data,setData]=useState<any>({}),[code,setCode]=useState(''),[diag,setDiag]=useState<any>(null),[busy,setBusy]=useState('');
+ const load=async()=>{const paths:any={db:'/api/admin/theme-db/status',themeCoverage:'/api/admin/theme-sync/coverage',sourceCoverage:'/api/admin/market-theme-sync/coverage',classification:'/api/admin/classification-sync/coverage',normalize:'/api/admin/theme-normalize/status'};const out:any={};await Promise.all(Object.entries(paths).map(async([k,p])=>{out[k]=await get(String(p)).catch(e=>({error:errorText(e)}))}));setData(out)};
+ useEffect(()=>{void load()},[]);
+ const act=async(label:string,path:string)=>{setBusy(path);try{const r=await post(path,{});Alert.alert(label,r?.message||'요청을 완료했습니다.');await load()}catch(e){Alert.alert(label,errorText(e))}finally{setBusy('')}};
+ const diagnose=async()=>{if(!/^\d{6}$/.test(code.trim())){Alert.alert('종목코드','6자리 종목코드를 입력해주세요.');return}setBusy('diag');try{setDiag(await get(`/api/admin/theme-diagnostic/${code.trim()}`))}catch(e){Alert.alert('진단 실패',errorText(e))}finally{setBusy('')}};
+ const db=data.db||{},norm=data.normalize||{};
+ return <Screen><PageHeader eyebrow="ADMIN / THEME" title="테마 유지보수" subtitle="테마 DB 복구·표준화·커버리지·개별 종목 진단 기능" right={<Button compact tone="ghost" title="닫기" onPress={()=>router.back()}/>}/><Card><SectionTitle title="테마 DB 상태" hint={db.error||db.message||'테마 스키마와 저장 상태'}/><View style={s.stats}><Stat label="테마" value={String(db.theme_count??db.themes??'-')}/><Stat label="연결" value={String(db.link_count??db.memberships??'-')}/><Stat label="분석 종목" value={String(db.stock_count??db.stocks??'-')}/></View><Button title={busy==='/api/admin/theme-db/repair'?'복구 중...':'테마 DB 검사·복구'} tone="secondary" disabled={!!busy} onPress={()=>void act('테마 DB 복구','/api/admin/theme-db/repair')}/></Card><Card><SectionTitle title="StockLog 표준 테마 재구축" hint={norm.message||norm.stage_label||norm.error||'표준 테마 엔진으로 전체 종목을 재분류합니다.'}/><View style={s.stats}><Stat label="상태" value={norm.running?'실행 중':norm.phase||'대기'}/><Stat label="진행" value={`${Number(norm.progress_value||0).toFixed(0)}%`}/><Stat label="현재" value={norm.current_name||'-'}/></View>{norm.last_error?<Text style={s.err}>{norm.last_error}</Text>:null}<Button title={busy==='/api/admin/theme-normalize'?'시작 중...':'표준 테마 재구축 시작'} disabled={!!busy||norm.running} onPress={()=>void act('표준 테마 재구축','/api/admin/theme-normalize')}/></Card><Card><SectionTitle title="커버리지"/><Text style={s.json}>{JSON.stringify({theme:data.themeCoverage,providers:data.sourceCoverage,classification:data.classification},null,2).slice(0,7000)}</Text></Card><Card><SectionTitle title="개별 종목 테마 진단" hint="키움 공식 테마 연결과 fallback 분류를 확인합니다."/><Field label="종목코드" keyboardType="number-pad" maxLength={6} value={code} onChangeText={setCode} placeholder="005930"/><Button compact tone="secondary" title={busy==='diag'?'진단 중...':'진단 실행'} disabled={!!busy} onPress={()=>void diagnose()}/>{diag?<Text selectable style={s.json}>{JSON.stringify(diag,null,2)}</Text>:null}</Card></Screen>
+}
+const s=StyleSheet.create({stats:{flexDirection:'row',flexWrap:'wrap',gap:12,marginBottom:12},err:{fontSize:11,color:colors.danger,lineHeight:17,marginBottom:10},json:{fontFamily:'monospace',fontSize:10,lineHeight:15,color:colors.text2,marginTop:10}});

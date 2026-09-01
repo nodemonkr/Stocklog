@@ -1,0 +1,737 @@
+/*
+ * StockLog responsive consolidation
+ *
+ * The legacy stylesheet contains feature-specific breakpoints accumulated
+ * over many releases. This final stylesheet owns viewport adaptation only,
+ * so every page follows the same desktop, tablet and phone behavior.
+ */
+
+:root{
+  --responsive-content-max:1600px;
+  --responsive-page-gap:clamp(14px,1.4vw,22px);
+  --responsive-phone-gutter:14px;
+  --responsive-mobile-nav:72px;
+}
+
+html,body,#root{
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  overflow-x:clip!important;
+}
+
+body{
+  min-height:100dvh;
+  text-rendering:optimizeLegibility;
+}
+
+button,a,input,select,textarea,[role="button"]{
+  -webkit-tap-highlight-color:transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible{
+  outline:3px solid color-mix(in srgb,var(--ui-primary,#5065f6) 28%,transparent)!important;
+  outline-offset:2px;
+}
+
+.skip-link{
+  position:fixed;
+  z-index:20000;
+  top:10px;
+  left:10px;
+  padding:10px 14px;
+  border-radius:10px;
+  background:#fff;
+  color:#1f2d40;
+  font-size:13px;
+  font-weight:800;
+  box-shadow:0 10px 30px rgba(15,23,42,.2);
+  transform:translateY(-160%);
+  transition:transform .15s ease;
+}
+.skip-link:focus{transform:translateY(0)}
+
+.app-main{
+  min-width:0!important;
+}
+
+.app-main>:not(.modal):not([class*="overlay"]):not([class*="backdrop"]){
+  width:min(100%,var(--responsive-content-max));
+  max-width:var(--responsive-content-max)!important;
+  margin-inline:auto;
+}
+
+.app-main>.smart-list-loading-overlay{
+  width:auto!important;
+  max-width:none!important;
+  margin:0!important;
+}
+
+.app-main :is(section,article,header,footer,form,div,span),
+.detail :is(section,article,header,footer,form,div,span){min-width:0}
+
+.page-head{
+  width:100%;
+  flex-wrap:wrap;
+  row-gap:14px!important;
+}
+.page-head>div:first-child{min-width:min(100%,320px);max-width:900px}
+.page-head :is(.smart-page-tools,.trading-head-actions,.portfolio-page-actions,.auto-head-actions,.auto-settings-page-actions){min-width:0}
+
+.section-title-row,
+.admin-panel-head,
+.admin-compact-head,
+.auto-monitor-head,
+.auto-section-head{
+  flex-wrap:wrap;
+}
+
+.filterbar,
+.flow-chip-group,
+.chart-periods,
+.chart-indicators,
+.trading-head-actions,
+.portfolio-page-actions,
+.auto-head-actions,
+.auto-settings-page-actions,
+.holding-panel-actions,
+.admin-social-actions,
+.admin-api-actions{
+  max-width:100%;
+  flex-wrap:wrap!important;
+}
+
+.app-main :is(img,svg,canvas,video){max-width:100%}
+.app-main :is(p,small,span,b,strong,em,dd){overflow-wrap:anywhere}
+
+/* Dense data stays readable inside its own region instead of shrinking type. */
+.financial-table,
+.financial-table-scroll,
+.report-table,
+.detail-flow-table,
+.chart-signal-table{
+  max-width:100%!important;
+  overscroll-behavior-inline:contain;
+  scrollbar-width:thin;
+}
+
+/* --------------------------------------------------------------------------
+   Compact desktop and tablets
+   -------------------------------------------------------------------------- */
+@media (min-width:761px) and (max-width:1279px){
+  .app-main{
+    padding:clamp(20px,2.4vw,30px)!important;
+  }
+
+  .page-head h1{font-size:clamp(27px,3.2vw,34px)!important}
+
+  .smart-page-head,
+  .trading-page-head,
+  .portfolio-page-head,
+  .auto-page-head,
+  .flow-page-head{
+    align-items:flex-start!important;
+  }
+
+  .smart-page-tools{width:100%;max-width:none!important}
+  .smart-market-mini{width:100%!important;max-width:none!important}
+
+  .stock-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .asset-grid,
+  .flow-summary-grid,
+  .auto-overview-grid,
+  .auto-diagnostic-grid,
+  .admin-summary-bar{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+
+  .portfolio-page-hero,
+  .portfolio-hero,
+  .portfolio-mix-layout,
+  .portfolio-category-layout,
+  .trading-workspace,
+  .holding-browser,
+  .auto-main-layout,
+  .auto-workbench,
+  .theme-layout{
+    grid-template-columns:1fr!important;
+  }
+
+  .portfolio-page-total,
+  .portfolio-hero-main{
+    padding-right:0!important;
+    padding-bottom:18px;
+    border-right:0!important;
+    border-bottom:1px solid var(--ui-border,#dfe5ee)!important;
+  }
+
+  .holding-list{max-height:460px}
+  .holding-detail-pane,.auto-positions-panel{position:static!important}
+
+  /* Portfolio and auto-monitor tables become readable tablet cards. */
+  .portfolio-holding-table,
+  .auto-monitor-table{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:12px!important;
+    overflow:visible!important;
+    border:0!important;
+    background:transparent!important;
+  }
+  .portfolio-holding-head,.auto-monitor-columns{display:none!important}
+  .portfolio-holding-row,
+  .auto-monitor-row{
+    min-width:0!important;
+    min-height:0!important;
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:10px 14px!important;
+    padding:16px!important;
+    border:1px solid var(--ui-border,#dfe5ee)!important;
+    border-radius:15px!important;
+    background:var(--ui-surface,#fff)!important;
+  }
+  .portfolio-holding-row>span,
+  .auto-monitor-row>*{
+    min-width:0!important;
+    grid-column:auto!important;
+    grid-row:auto!important;
+    align-items:flex-start!important;
+    justify-content:flex-start!important;
+    text-align:left!important;
+    overflow:visible!important;
+  }
+  .portfolio-holding-row>.portfolio-stock-cell,
+  .auto-monitor-row>.auto-monitor-stock{
+    grid-column:1/-1!important;
+    padding-bottom:10px!important;
+    border-bottom:1px solid var(--ui-border,#edf1f5)!important;
+  }
+  .portfolio-holding-row>.portfolio-row-actions,
+  .auto-monitor-row>.auto-monitor-reason{
+    grid-column:1/-1!important;
+  }
+  .portfolio-holding-row>span>b,
+  .portfolio-holding-row>span>strong,
+  .auto-monitor-row b{font-size:12px!important;text-align:left!important}
+  .portfolio-holding-row>span>small,
+  .auto-monitor-row small{font-size:10px!important;text-align:left!important}
+  .portfolio-theme-cell .stock-theme-badges{justify-content:flex-start!important}
+  .portfolio-ai-reason-btn{min-height:38px;font-size:11px!important}
+
+  .admin-policy-wrap,
+  .pro-order-table-wrap,
+  .portfolio-category-table-wrap{max-width:100%}
+}
+
+@media (min-width:761px) and (max-width:1024px){
+  .page-head{
+    align-items:flex-start!important;
+    flex-direction:column!important;
+  }
+  .page-head>div:last-child:not(:first-child){width:100%}
+
+  .smart-market-mini-items{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  .smart-mode-grid{grid-template-columns:1fr!important}
+  .smart-explore-filters,.smart-premium-filter-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+
+  .flow-filter-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .provider-sync-grid,
+  .admin-social-grid,
+  .admin-api-compact-grid,
+  .admin-manual-grid{grid-template-columns:1fr!important}
+
+  .detail{width:min(100vw,900px)!important}
+  .detail-cols,.analysis-grid,.reason-columns{grid-template-columns:1fr!important}
+
+  .auth-shell-modern{padding:22px!important}
+  .auth-layout-modern,
+  .auth-layout-modern.question-mode{
+    width:min(100%,680px)!important;
+    min-height:0!important;
+    grid-template-columns:1fr!important;
+  }
+  .auth-brand-panel{display:none!important}
+  .auth-form-panel{min-height:620px!important;padding:42px!important}
+  .auth-mobile-logo{display:flex!important}
+}
+
+/* --------------------------------------------------------------------------
+   Phones
+   -------------------------------------------------------------------------- */
+@media (max-width:760px){
+  :root{
+    --responsive-phone-gutter:max(12px,env(safe-area-inset-left));
+    --responsive-mobile-nav:72px;
+  }
+
+  body{font-size:14px!important}
+
+  button,[role="button"]{touch-action:manipulation}
+  input,select,textarea{font-size:16px!important}
+
+  .app{
+    display:block!important;
+    width:100%!important;
+    min-height:100dvh!important;
+  }
+
+  .mobile-app-header{
+    position:sticky!important;
+    z-index:700!important;
+    top:0!important;
+    min-height:calc(58px + env(safe-area-inset-top))!important;
+    padding:calc(8px + env(safe-area-inset-top)) 12px 8px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+  }
+
+  .mobile-app-brand{flex:1 1 auto;overflow:hidden}
+  .mobile-app-brand b{white-space:nowrap}
+  .mobile-profile-button{max-width:42vw!important}
+
+  .app-main{
+    width:100%!important;
+    margin:0!important;
+    padding:
+      18px
+      max(12px,env(safe-area-inset-right))
+      calc(var(--responsive-mobile-nav) + 24px + env(safe-area-inset-bottom))
+      max(12px,env(safe-area-inset-left))!important;
+  }
+
+  /* A scrollable dock keeps every entitled page reachable without tiny labels. */
+  .app-sidebar{
+    position:fixed!important;
+    z-index:850!important;
+    inset:auto 0 0 0!important;
+    width:100%!important;
+    height:calc(var(--responsive-mobile-nav) + env(safe-area-inset-bottom))!important;
+    min-height:0!important;
+    display:block!important;
+    padding:5px max(6px,env(safe-area-inset-right)) calc(5px + env(safe-area-inset-bottom)) max(6px,env(safe-area-inset-left))!important;
+    overflow:hidden!important;
+    border-top:1px solid rgba(255,255,255,.08)!important;
+    border-right:0!important;
+    box-shadow:0 -8px 28px rgba(15,23,42,.16);
+  }
+  .app-sidebar>.logo,.app-sidebar>.sidebar-account-card{display:none!important}
+  .app-nav{
+    width:100%!important;
+    height:100%!important;
+    display:flex!important;
+    flex-direction:row!important;
+    align-items:stretch!important;
+    gap:4px!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    scroll-snap-type:x proximity;
+    scrollbar-width:none;
+    overscroll-behavior-inline:contain;
+    -webkit-overflow-scrolling:touch;
+  }
+  .app-nav::-webkit-scrollbar{display:none}
+  .app-nav>.sidebar-nav-caption{display:none!important}
+  .app-nav>button{
+    flex:0 0 76px!important;
+    width:76px!important;
+    min-width:76px!important;
+    min-height:58px!important;
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    grid-template-rows:22px 15px!important;
+    place-items:center!important;
+    align-content:center!important;
+    gap:3px!important;
+    padding:5px 4px!important;
+    scroll-snap-align:center;
+    border-radius:11px!important;
+  }
+  .app-nav>button .nav-label-mobile{
+    display:block!important;
+    width:100%;
+    font-size:10px!important;
+    line-height:1.15!important;
+    text-align:center;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .app-nav>button .nav-label-desktop,.app-nav>button .nav-chevron{display:none!important}
+  .app-nav>button.active:before{
+    inset:0 18px auto!important;
+    width:auto!important;
+    height:3px!important;
+    border-radius:0 0 4px 4px!important;
+  }
+
+  .page-head{
+    align-items:stretch!important;
+    flex-direction:column!important;
+    gap:12px!important;
+    margin-bottom:18px!important;
+  }
+  .page-head>div:first-child{min-width:0;width:100%;max-width:none}
+  .page-head h1{font-size:clamp(24px,8vw,30px)!important;line-height:1.2!important}
+  .page-head p{font-size:13px!important;line-height:1.6!important}
+  .page-head>button{width:100%!important}
+
+  .page-head :is(.smart-page-tools,.trading-head-actions,.portfolio-page-actions,.auto-head-actions,.auto-settings-page-actions),
+  .section-title-row>div:last-child:not(:first-child),
+  .admin-panel-head>div:last-child:not(:first-child){width:100%!important}
+
+  .trading-head-actions,
+  .portfolio-page-actions,
+  .auto-head-actions,
+  .auto-settings-page-actions,
+  .holding-panel-actions{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+  }
+  .trading-head-actions>*,
+  .portfolio-page-actions>*,
+  .auto-head-actions>*,
+  .auto-settings-page-actions>*,
+  .holding-panel-actions>*{width:100%!important;justify-content:center}
+
+  .panel,.asset,.stock-card{padding:15px!important;border-radius:15px!important}
+  .section-title-row{align-items:stretch!important;flex-direction:column!important;gap:10px!important}
+  .section-title-row>button{width:100%!important}
+
+  .row{flex-wrap:wrap}
+  .filterbar{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important}
+  .filterbar>.search{grid-column:1/-1;width:100%!important;margin:0!important}
+  .filterbar>.chip{width:100%}
+
+  .stock-grid,
+  .asset-grid,
+  .two-col,
+  .theme-layout,
+  .portfolio-page-hero,
+  .portfolio-hero,
+  .portfolio-mix-layout,
+  .portfolio-category-layout,
+  .trading-workspace,
+  .holding-browser,
+  .auto-main-layout,
+  .auto-workbench,
+  .auto-side-stack,
+  .account-profile-grid,
+  .account-profile-service-grid,
+  .provider-sync-grid,
+  .admin-social-grid,
+  .admin-api-compact-grid,
+  .admin-manual-grid{
+    grid-template-columns:1fr!important;
+  }
+
+  .asset-grid,.stock-grid,.account-profile-grid{gap:11px!important}
+
+  /* Login, registration and investor onboarding */
+  .auth-shell-modern{min-height:100dvh!important;padding:0!important}
+  .auth-layout-modern,
+  .auth-layout-modern.question-mode{
+    width:100%!important;
+    min-height:100dvh!important;
+    margin:0!important;
+    grid-template-columns:1fr!important;
+    border:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+  }
+  .auth-brand-panel{display:none!important}
+  .auth-form-panel{
+    min-height:100dvh!important;
+    padding:calc(22px + env(safe-area-inset-top)) 16px calc(28px + env(safe-area-inset-bottom))!important;
+    align-content:start!important;
+    place-items:start stretch!important;
+  }
+  .auth-mobile-logo{display:flex!important;margin-bottom:26px!important}
+  .auth-form-card,.auth-question-card{width:100%!important;max-width:560px!important;margin-inline:auto!important}
+  .auth-modern-form input,.auth-modern-form select,.auth-social-button,.auth-submit{min-height:48px!important}
+  .auth-birthdate-selects{grid-template-columns:1fr 1fr 1fr!important;gap:7px!important}
+  .auth-consent-box{padding:12px!important}
+  .auth-question-options button{min-height:58px!important}
+  .auth-question-nav{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important}
+  .auth-question-nav button{width:100%!important}
+
+  /* Smart analysis */
+  .smart-page-tools,.smart-market-mini,.smart-list-controls,.smart-search-section,.smart-filter-shell{width:100%!important;max-width:none!important}
+  .smart-market-mini-items{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+  .smart-mode-grid,.smart-explore-filters,.smart-premium-filter-grid{grid-template-columns:1fr!important}
+  .smart-advanced-toggle,.smart-filter-reset{width:100%!important}
+  .smart-membership-value{grid-template-columns:1fr!important}
+  .smart-membership-benefits{grid-template-columns:1fr 1fr!important}
+  .smart-table-wrap,.smart-recommend-table{overflow:visible!important}
+  .smart-dual-score-table{border:0!important;background:transparent!important;box-shadow:none!important}
+  .smart-dual-score-row{margin-bottom:11px!important}
+  .smart-score-actions{grid-template-columns:1fr 1fr!important}
+  .stocklog-pagination{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important}
+  .stocklog-pagination>.stocklog-page-numbers,.stocklog-pagination>small{grid-column:1/-1}
+  .stocklog-page-numbers{justify-content:center!important;overflow:visible!important;flex-wrap:wrap!important}
+
+  /* Themes and investor flow */
+  .theme-rank-list{max-height:min(46vh,420px)!important;overflow:auto!important}
+  .theme-live-meta{grid-template-columns:1fr 1fr!important}
+  .flow-summary-grid{grid-template-columns:1fr 1fr!important;gap:8px!important}
+  .flow-filter-grid{grid-template-columns:1fr!important}
+  .flow-filter-row{align-items:stretch!important;flex-direction:column!important}
+  .flow-chip-group{width:100%!important;overflow:visible!important;flex-wrap:wrap!important}
+  .flow-chip-group button{flex:1 1 82px!important;justify-content:center}
+  .flow-card.flow-card-v2{grid-template-columns:82px minmax(0,1fr)!important}
+  .flow-stock-title-v2{align-items:stretch!important;flex-direction:column!important}
+  .flow-stock-detail-button{width:100%!important}
+  .flow-investor-values-v2,.flow-subject-row-v2{grid-template-columns:1fr 1fr!important}
+  .flow-week-scroll{overflow-x:auto!important;scrollbar-width:thin}
+  .flow-week-grid{min-width:620px!important;grid-template-columns:64px repeat(var(--flow-days),minmax(76px,1fr))!important}
+  .flow-week-grid>div{font-size:9px!important;padding:5px!important;white-space:nowrap!important}
+
+  /* Trading and portfolio */
+  .portfolio-page-total,.portfolio-hero-main{padding-right:0!important;padding-bottom:16px;border-right:0!important;border-bottom:1px solid var(--ui-border,#e1e7ef)!important}
+  .portfolio-page-hero-kpis,.portfolio-kpi-grid,.auto-overview-grid,.auto-diagnostic-grid{grid-template-columns:1fr 1fr!important}
+  .holding-list{max-height:none!important}
+  .holding-detail-pane,.auto-positions-panel{position:static!important}
+  .holding-detail-head{align-items:flex-start!important;flex-direction:column!important}
+  .holding-detail-order-actions{grid-template-columns:1fr 1fr!important}
+  .holding-flow-primary,.holding-flow-detail,.holding-detail-stats{grid-template-columns:1fr 1fr!important}
+
+  .portfolio-holding-table,
+  .auto-monitor-table{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+    overflow:visible!important;
+    border:0!important;
+    background:transparent!important;
+  }
+  .portfolio-holding-head,.auto-monitor-columns{display:none!important}
+  .portfolio-holding-row,
+  .auto-monitor-row{
+    min-width:0!important;
+    min-height:0!important;
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:10px 12px!important;
+    margin:0!important;
+    padding:14px!important;
+    border:1px solid var(--ui-border,#e1e7ef)!important;
+    border-radius:14px!important;
+    background:var(--ui-surface,#fff)!important;
+  }
+  .portfolio-holding-row>span,
+  .auto-monitor-row>*{
+    display:flex!important;
+    min-width:0!important;
+    grid-column:auto!important;
+    grid-row:auto!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    justify-content:flex-start!important;
+    padding:0!important;
+    border:0!important;
+    text-align:left!important;
+    overflow:visible!important;
+  }
+  .portfolio-holding-row>.portfolio-stock-cell,
+  .auto-monitor-row>.auto-monitor-stock{
+    grid-column:1/-1!important;
+    padding-bottom:9px!important;
+    border-bottom:1px solid var(--ui-border,#edf1f5)!important;
+  }
+  .portfolio-holding-row>.portfolio-theme-cell,
+  .portfolio-holding-row>.portfolio-row-actions,
+  .auto-monitor-row>.auto-monitor-reason{
+    grid-column:1/-1!important;
+  }
+  .portfolio-holding-row>span>b,
+  .portfolio-holding-row>span>strong,
+  .auto-monitor-row b{font-size:12px!important;text-align:left!important;white-space:normal!important;overflow:visible!important}
+  .portfolio-holding-row>span>small,
+  .auto-monitor-row small{font-size:10px!important;text-align:left!important;white-space:normal!important}
+  .portfolio-source-badge b,.portfolio-source-badge small,.portfolio-source-badge em{white-space:normal!important;overflow:visible!important}
+  .portfolio-theme-cell .stock-theme-badges{justify-content:flex-start!important;flex-wrap:wrap!important}
+  .portfolio-ai-reason-btn{width:100%!important;min-height:42px;font-size:11px!important}
+
+  .portfolio-category-table-head{display:none!important}
+  .portfolio-category-rows{display:grid!important;gap:9px!important}
+  .portfolio-category-row{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:10px 12px!important;
+    padding:13px!important;
+    border:1px solid var(--ui-border,#e3e8ef)!important;
+    border-radius:12px!important;
+    background:var(--ui-surface,#fff)!important;
+    font-size:11px!important;
+  }
+  .portfolio-category-row>.category-name-cell{grid-column:1/-1;padding-bottom:7px;border-bottom:1px solid var(--ui-border,#edf1f5)}
+
+  /* Dense financial data uses contained horizontal scrolling at readable size. */
+  .financial-table,
+  .financial-table-scroll,
+  .report-table,
+  .detail-flow-table,
+  .chart-signal-table{
+    width:100%!important;
+    max-width:100%!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .financial-row{min-width:660px!important}
+  .financial-report-table{min-width:680px!important;font-size:11px!important}
+  .chart-signal-table table{min-width:620px!important;font-size:11px!important}
+  .financial-report-table th,.financial-report-table td,.chart-signal-table th,.chart-signal-table td{padding:9px 8px!important;font-size:11px!important;white-space:nowrap!important}
+
+  /* Settings, profiles and admin */
+  .status-grid,.investor-axis-preview-grid,.investor-trait-grid,.investor-type-grid{grid-template-columns:1fr 1fr!important}
+  .account-profile-hero{grid-template-columns:54px minmax(0,1fr)!important}
+  .account-profile-edit{grid-column:1/-1!important;width:100%!important}
+  .account-profile-theme-setting,.account-profile-theme-options{grid-template-columns:1fr!important}
+  .account-profile-info-list>div{align-items:flex-start!important;gap:12px}
+  .account-profile-info-list dd{max-width:62%;text-align:right}
+
+  .admin-summary-bar,.admin-tier-summary,.admin-sync-step-grid-v2,.admin-sync-live-kpi,.admin-flow-coverage-grid{grid-template-columns:1fr 1fr!important}
+  .admin-page-head>button,.admin-refresh{width:100%!important}
+  .admin-account-toolbar{align-items:stretch!important;flex-direction:column!important}
+  .admin-account-search{width:100%!important;min-width:0!important}
+  .admin-account-filters,.admin-member-detail-tabs{width:100%!important;overflow-x:auto!important;flex-wrap:nowrap!important;scrollbar-width:none}
+  .admin-account-filters button,.admin-member-detail-tabs button{flex:0 0 auto!important;min-height:40px}
+  .admin-account-row{grid-template-columns:1fr 1fr!important}
+  .admin-account-identity,.admin-account-action{grid-column:1/-1!important}
+  .admin-account-action button{width:100%!important}
+
+  .admin-policy-head{display:none!important}
+  .admin-policy-table{min-width:0!important;display:grid!important;gap:10px!important}
+  .admin-policy-row:not(.admin-policy-head){
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:9px!important;
+    padding:13px!important;
+    border:1px solid var(--ui-border,#e3e8ef)!important;
+    border-radius:12px!important;
+    background:var(--ui-surface,#fff)!important;
+  }
+  .admin-policy-row:not(.admin-policy-head)>:first-child{grid-column:1/-1;padding-bottom:9px!important;border-bottom:1px solid var(--ui-border,#edf1f5)}
+  .admin-policy-row>div,.admin-policy-row>b{padding:6px!important;font-size:11px!important}
+  .admin-policy-row>div:first-child>b{font-size:12px!important}
+  .admin-policy-row>div:first-child>span,.admin-ai-limit small,.admin-ai-limit em{font-size:9px!important}
+  .admin-policy-toggle{font-size:10px!important;gap:5px!important}
+  .admin-ai-limit{grid-template-columns:1fr!important}
+  .admin-ai-limit input{width:100%!important;min-height:34px!important;font-size:12px!important}
+
+  /* Drawers and dialogs are true mobile sheets. */
+  .modal,.smart-score-detail-modal,.admin-member-modal{padding:0!important;align-items:stretch!important}
+  .detail,.smart-score-detail-panel,.admin-member-detail{
+    width:100vw!important;
+    max-width:none!important;
+    min-height:100dvh;
+    max-height:100dvh!important;
+    border-radius:0!important;
+  }
+  .detail{padding:calc(58px + env(safe-area-inset-top)) 12px calc(24px + env(safe-area-inset-bottom))!important}
+  .detail-title{align-items:flex-start!important;flex-direction:column!important;margin:0 0 18px!important}
+  .detail-title-actions,.detail-action-row{width:100%!important;display:grid!important;grid-template-columns:1fr!important}
+  .detail section{padding:14px!important}
+  .detail-cols,.analysis-grid,.reason-columns{grid-template-columns:1fr!important}
+  .metric-grid,.valuation-grid,.detail-data-status,.ai-decision-balance{grid-template-columns:1fr 1fr!important}
+  .detailed-chart,.detailed-chart.compact,.broker-chart-panel .detailed-chart.compact{height:clamp(270px,78vw,360px)!important;min-height:260px!important}
+
+  .order-page-overlay,.pro-order-overlay{padding:0!important;align-items:stretch!important}
+  .order-page-shell,.pro-order-shell{width:100vw!important;height:100dvh!important;max-width:none!important;max-height:none!important;border:0!important;border-radius:0!important}
+  .order-page-header,.pro-order-header{padding:calc(11px + env(safe-area-inset-top)) 12px 11px!important}
+  .order-page-body,.pro-order-body{padding:11px 10px calc(20px + env(safe-area-inset-bottom))!important}
+  .order-page-workspace,.pro-order-grid,.pro-stock-bar,.pro-selected-quote,.pro-account-strip{grid-template-columns:1fr!important}
+  .pro-manager-tabs,.pro-side-tabs{overflow-x:auto!important;flex-wrap:nowrap!important;scrollbar-width:none}
+  .pro-manager-tabs button,.pro-side-tabs button{flex:0 0 104px!important}
+
+  .pretty-dialog-backdrop,.pretty-dialog-overlay,.formula-modal-overlay,.admin-sync-modal-backdrop,.auto-audit-detail-backdrop{padding:10px!important;align-items:flex-end!important}
+  .pretty-dialog,.pretty-dialog-card,.formula-modal,.admin-sync-modal,.auto-audit-detail-shell{width:100%!important;max-width:none!important;max-height:calc(100dvh - 20px)!important;border-radius:16px!important;overflow:auto!important}
+  .pretty-dialog-actions,.formula-actions,.admin-sync-modal-actions{display:grid!important;grid-template-columns:1fr!important}
+  .pretty-dialog-actions button,.formula-actions button,.admin-sync-modal-actions button{width:100%!important}
+}
+
+@media (max-width:430px){
+  :root{--responsive-phone-gutter:10px}
+
+  .mobile-app-brand span{display:none!important}
+  .mobile-profile-button{max-width:40vw!important}
+  .app-main{padding-left:10px!important;padding-right:10px!important}
+  .panel,.asset,.stock-card{padding:13px!important}
+
+  .filterbar,
+  .smart-membership-benefits,
+  .flow-summary-grid,
+  .portfolio-page-hero-kpis,
+  .portfolio-kpi-grid,
+  .auto-overview-grid,
+  .auto-diagnostic-grid,
+  .status-grid,
+  .investor-axis-preview-grid,
+  .investor-trait-grid,
+  .investor-type-grid,
+  .metric-grid,
+  .valuation-grid,
+  .detail-data-status,
+  .ai-decision-balance,
+  .admin-summary-bar,
+  .admin-tier-summary,
+  .admin-sync-step-grid-v2,
+  .admin-sync-live-kpi,
+  .admin-flow-coverage-grid{
+    grid-template-columns:1fr!important;
+  }
+
+  .filterbar>.search{grid-column:auto}
+  .holding-flow-primary,.holding-flow-detail,.holding-detail-stats{grid-template-columns:1fr!important}
+  .portfolio-holding-row,.auto-monitor-row{grid-template-columns:1fr!important}
+  .portfolio-holding-row>*,.auto-monitor-row>*{grid-column:1!important}
+  .portfolio-category-row{grid-template-columns:1fr!important}
+  .portfolio-category-row>*{grid-column:1!important}
+  .admin-account-row,.admin-policy-row:not(.admin-policy-head){grid-template-columns:1fr!important}
+  .admin-policy-row:not(.admin-policy-head)>*{grid-column:1!important}
+
+  .flow-card.flow-card-v2{grid-template-columns:1fr!important}
+  .flow-rank-v2{
+    display:grid!important;
+    grid-template-columns:auto auto minmax(120px,1fr)!important;
+    align-items:center!important;
+    gap:10px!important;
+    padding:10px 12px!important;
+    border-right:0!important;
+    border-bottom:1px solid var(--ui-border,#e3e8ef)!important;
+  }
+  .flow-rank-label{display:none!important}
+  .flow-rank-number{display:flex!important;align-items:baseline!important;gap:3px}
+  .flow-score-modern{width:100%!important;max-width:none!important}
+
+  .account-profile-hero{grid-template-columns:46px minmax(0,1fr)!important;padding:14px!important}
+  .account-profile-avatar{width:46px!important;height:46px!important}
+  .account-profile-info-list>div{display:grid!important;grid-template-columns:1fr!important;gap:4px!important}
+  .account-profile-info-list dd{max-width:none;text-align:left}
+
+  .auth-birthdate-selects,.auth-question-nav{grid-template-columns:1fr!important}
+}
+
+@media (max-width:360px){
+  .mobile-profile-button span{display:none}
+  .mobile-profile-button{width:40px!important;padding:0!important;justify-content:center}
+  .page-head h1{font-size:23px!important}
+  .app-nav>button{flex-basis:72px!important;width:72px!important;min-width:72px!important}
+}
+
+@media (hover:none) and (pointer:coarse){
+  .stock-card:hover,.holding-card:hover,.theme-rank-item:hover,.theme-stock-list>button:hover{transform:none!important}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html:focus-within{scroll-behavior:auto}
+  *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+}

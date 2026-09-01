@@ -1,0 +1,34 @@
+StockLog synchronization diagnostic log
+created_at_kst=2026-08-30T21:04:37.485688+09:00
+kind=sync-overview
+run_id=monitor-1788091477485682758
+pid=511329
+metadata={"cached_snapshot_available": true}
+NOTE=Secrets/tokens/passwords/account numbers are masked before writing.
+
+[2026-08-30T21:04:38.228543+09:00] [ERROR] SYNC_OVERVIEW_MONITOR_FALLBACK
+details={"elapsed_ms": 50331.5, "main_pool": {"class": "QueuePool", "size": 12, "checked_in": 5, "checked_out": 6, "overflow": -1, "configured_pool_size": 12, "configured_max_overflow": 8, "configured_timeout_seconds": 8}, "monitor_pool": {"class": "QueuePool", "size": 2, "checked_in": 2, "checked_out": 0, "overflow": 0, "configured_pool_size": 2, "configured_max_overflow": 0, "configured_timeout_seconds": 2}}
+exception_type=TimeoutError
+exception=
+traceback=
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/database.py", line 70, in run_monitor_blocking
+    return await loop.run_in_executor(_monitor_executor, partial(func, *args, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 22138, in admin_sync_overview
+    _sync_overview_last_error_log_at=now_mono
+  File "/usr/lib/python3.12/asyncio/tasks.py", line 519, in wait_for
+    async with timeouts.timeout(timeout):
+  File "/usr/lib/python3.12/asyncio/timeouts.py", line 115, in __aexit__
+    raise TimeoutError from exc_val
+TimeoutError
+
+

@@ -1,0 +1,11 @@
+StockLog synchronization diagnostic log
+created_at_kst=2026-08-30T01:24:22.253900+09:00
+kind=unified-sync
+run_id=manual-1-1788020662253894006
+pid=470391
+metadata={"admin_id": 1, "trigger": "manual", "scheduled_slot": "", "requested_scopes": ["flow"]}
+NOTE=Secrets/tokens/passwords/account numbers are masked before writing.
+
+[2026-08-30T01:24:22.258972+09:00] [INFO] UNIFIED_SYNC_START
+details={"trigger": "manual", "selected_scopes": ["flow"], "flow_universe_limit": 0, "flow_history_days": 20}
+

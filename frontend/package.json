@@ -1,0 +1,22 @@
+{
+  "name": "stocklog-v2",
+  "private": true,
+  "version": "3.88.2",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5174",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 5174",
+    "test:access-gate": "node --test test/access-gate.test.mjs"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "5.1.1",
+    "vite": "7.3.6",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "axios": "1.11.0",
+    "lucide-react": "0.468.0",
+    "echarts": "^6.0.0"
+  },
+  "devDependencies": {}
+}

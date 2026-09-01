@@ -1,0 +1,604 @@
+StockLog synchronization diagnostic log
+created_at_kst=2026-08-31T23:28:32.001997+09:00
+kind=unified-sync
+run_id=manual-1-1788186512001986569
+pid=625382
+metadata={"admin_id": 1, "trigger": "manual", "scheduled_slot": "", "requested_scopes": ["kiwoom", "dart", "kiwoom_themes", "market_themes", "classification", "theme_engine", "flow", "smart_scores"]}
+NOTE=Secrets/tokens/passwords/account numbers are masked before writing.
+
+[2026-08-31T23:28:32.011730+09:00] [INFO] UNIFIED_SYNC_START
+details={"trigger": "manual", "selected_scopes": ["kiwoom", "dart", "kiwoom_themes", "market_themes", "classification", "theme_engine", "flow", "smart_scores"], "flow_universe_limit": 0, "flow_history_days": 20}
+
+[2026-08-31T23:28:32.042366+09:00] [INFO] UNIFIED_KIWOOM_STAGE_START
+details={}
+
+[2026-08-31T23:28:32.042638+09:00] [INFO] MARKET_DATA_SYNC_WAIT_LOCK
+details={"mode": "kiwoom"}
+
+[2026-08-31T23:28:32.042870+09:00] [INFO] MARKET_DATA_SYNC_LOCK_ACQUIRED
+details={"mode": "kiwoom"}
+
+[2026-08-31T23:28:32.050549+09:00] [INFO] KIWOOM_RUNTIME_VALIDATE_START
+details={}
+
+[2026-08-31T23:28:32.050820+09:00] [INFO] KIWOOM_RUNTIME_VALIDATE_DONE
+details={}
+
+[2026-08-31T23:28:32.051026+09:00] [INFO] KIWOOM_ADMIN_LOAD_START
+details={"admin_id": 1}
+
+[2026-08-31T23:28:32.054823+09:00] [INFO] KIWOOM_ADMIN_LOAD_DONE
+details={"use_mock": true, "token_cached": true, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:28:28.810469+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 69943.9, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:28:32.055205+09:00] [INFO] KIWOOM_TOKEN_START
+details={"kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:28:28.810469+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 69943.9, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:28:32.055543+09:00] [INFO] KIWOOM_TOKEN_READY
+details={"cached": true, "elapsed_seconds": 0.0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:28:28.810469+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 69943.9, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:28:32.055882+09:00] [INFO] KIWOOM_UNIVERSE_START
+details={"kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:28:28.810469+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 69943.9, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:28:32.060987+09:00] [INFO] UNIVERSE_KOSPI_START
+details={"market_type": "0", "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:28:28.810469+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 69943.9, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:28:32.281263+09:00] [INFO] UNIVERSE_KOSPI_DONE
+details={"rows": 2155, "elapsed_seconds": 0.22, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:28:32.253055+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 69943.7, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:28:32.287115+09:00] [INFO] UNIVERSE_KOSDAQ_START
+details={"market_type": "10", "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:28:32.253055+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 69943.7, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:28:33.310818+09:00] [INFO] UNIVERSE_KOSDAQ_DONE
+details={"rows": 1770, "elapsed_seconds": 1.023, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:28:33.288220+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 69942.7, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:28:33.311499+09:00] [INFO] UNIVERSE_KIND_START
+details={"kiwoom_rows": 3925}
+
+[2026-08-31T23:28:36.230424+09:00] [INFO] UNIVERSE_KIND_DONE
+details={"kind_rows": 2617, "merged_rows": 3946, "elapsed_seconds": 2.919}
+
+[2026-08-31T23:28:38.391815+09:00] [INFO] KIWOOM_UNIVERSE_DONE
+details={"stocks": 2524, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:28:33.288220+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 69937.6, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:28:38.400490+09:00] [INFO] KIWOOM_INDEX_START
+details={"api_id": "ka20006", "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:28:33.288220+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 69937.6, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:28:38.527561+09:00] [INFO] KIWOOM_INDEX_DONE
+details={"outcome": "ok", "retries": 0, "elapsed_seconds": 0.126, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:28:38.510721+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 69937.5, "queued": 1, "gate_active_api_id": "ka10076", "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:28:39.047054+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 1, "total": 2524, "current_code": "000020", "current_name": "동화약품", "success": 1, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:28:38.970062+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 69937.0, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:31:04.103671+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 100, "total": 2524, "current_code": "002620", "current_name": "제일파마홀딩스", "success": 100, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:31:02.360770+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 69791.9, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:33:58.816778+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 200, "total": 2524, "current_code": "005250", "current_name": "녹십자홀딩스", "success": 200, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:33:56.934843+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 69617.2, "queued": 1, "gate_active_api_id": "ka10076", "gate_active_seconds": 1.8, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:36:13.229763+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 300, "total": 2524, "current_code": "009460", "current_name": "한창제지", "success": 300, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:36:13.149532+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 69482.8, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:38:01.234955+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 400, "total": 2524, "current_code": "017040", "current_name": "광명전기", "success": 400, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:38:01.166974+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 69374.8, "queued": 1, "gate_active_api_id": "ka10076", "gate_active_seconds": 0.1, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:39:49.425477+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 500, "total": 2524, "current_code": "035720", "current_name": "카카오", "success": 500, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:39:49.315772+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 69266.6, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:41:38.963862+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 600, "total": 2524, "current_code": "091810", "current_name": "트리니티항공", "success": 600, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:41:38.899907+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 69157.0, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:43:27.014303+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 700, "total": 2524, "current_code": "227840", "current_name": "현대코퍼레이션홀딩스", "success": 700, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:43:26.934544+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 69049.0, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:45:15.084169+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 800, "total": 2524, "current_code": "900310", "current_name": "컬러레이", "success": 800, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:45:15.025632+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 68940.9, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:47:03.588001+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 900, "total": 2524, "current_code": "019550", "current_name": "SBI인베스트먼트", "success": 900, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:47:03.516700+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 68832.4, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:49:01.368226+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 1000, "total": 2524, "current_code": "034950", "current_name": "한국기업평가", "success": 1000, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:49:01.291332+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 68714.6, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:51:27.335437+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 1100, "total": 2524, "current_code": "042420", "current_name": "네오위즈홀딩스", "success": 1100, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:51:27.263511+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 68568.7, "queued": 1, "gate_active_api_id": "ka10076", "gate_active_seconds": 0.1, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:53:15.416387+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 1200, "total": 2524, "current_code": "052790", "current_name": "액토즈소프트", "success": 1200, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:53:15.347492+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 68460.6, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:55:03.487719+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 1300, "total": 2524, "current_code": "065130", "current_name": "탑엔지니어링", "success": 1300, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:55:03.426707+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 68352.5, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:56:51.545451+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 1400, "total": 2524, "current_code": "078600", "current_name": "대주전자재료", "success": 1400, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:56:51.460190+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 68244.5, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-08-31T23:58:39.543942+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 1500, "total": 2524, "current_code": "092070", "current_name": "디엔에프", "success": 1500, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T14:58:39.477622+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 68136.5, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:00:32.994165+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 1600, "total": 2524, "current_code": "108860", "current_name": "셀바스AI", "success": 1600, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:00:32.925016+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 68023.0, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:02:21.030352+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 1700, "total": 2524, "current_code": "137950", "current_name": "제이씨케미칼", "success": 1700, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:02:20.970278+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 67915.0, "queued": 1, "gate_active_api_id": "ka10076", "gate_active_seconds": 0.1, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:04:09.044024+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 1800, "total": 2524, "current_code": "189980", "current_name": "흥국에프엔비", "success": 1800, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:04:08.983553+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 67807.0, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:05:57.115372+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 1900, "total": 2524, "current_code": "220100", "current_name": "퓨쳐켐", "success": 1900, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:05:57.014368+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 67698.9, "queued": 1, "gate_active_api_id": "ka10076", "gate_active_seconds": 0.1, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:07:45.101187+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 2000, "total": 2524, "current_code": "257370", "current_name": "피엔티엠에스", "success": 2000, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:07:45.040539+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 67590.9, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:09:33.142764+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 2100, "total": 2524, "current_code": "298540", "current_name": "더네이쳐홀딩스", "success": 2100, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:09:33.070483+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 67482.9, "queued": 1, "gate_active_api_id": "ka10076", "gate_active_seconds": 0.1, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:11:22.731201+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 2200, "total": 2524, "current_code": "340450", "current_name": "지씨지놈", "success": 2200, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:11:22.676871+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 67373.3, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:13:10.799305+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 2300, "total": 2524, "current_code": "383310", "current_name": "에코프로에이치엔", "success": 2300, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:13:10.712214+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 67265.2, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:15:15.390014+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 2400, "total": 2524, "current_code": "443670", "current_name": "에스피소프트", "success": 2400, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:15:15.323097+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 67140.6, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:17:03.437363+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 2500, "total": 2524, "current_code": "491000", "current_name": "리브스메드", "success": 2500, "failed": 0, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:17:03.383151+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 67032.6, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:17:23.900070+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])"}
+exception_type=KiwoomError
+exception=ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 20605, in _provider_call_with_retry
+    return await call_factory(),retries,"ok",None
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2476, in daily_stock_chart
+    return await self._chart_request_with_variants(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2373, in _chart_request_with_variants
+    raise KiwoomError(" / ".join(errors[-4:]) or f"{api_id} 차트 조회 실패")
+app.kiwoom.KiwoomError: ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])
+
+
+[2026-09-01T00:17:27.141376+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])"}
+exception_type=KiwoomError
+exception=ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 20605, in _provider_call_with_retry
+    return await call_factory(),retries,"ok",None
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2476, in daily_stock_chart
+    return await self._chart_request_with_variants(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2373, in _chart_request_with_variants
+    raise KiwoomError(" / ".join(errors[-4:]) or f"{api_id} 차트 조회 실패")
+app.kiwoom.KiwoomError: ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])
+
+
+[2026-09-01T00:17:30.402103+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])"}
+exception_type=KiwoomError
+exception=ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 20605, in _provider_call_with_retry
+    return await call_factory(),retries,"ok",None
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2476, in daily_stock_chart
+    return await self._chart_request_with_variants(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2373, in _chart_request_with_variants
+    raise KiwoomError(" / ".join(errors[-4:]) or f"{api_id} 차트 조회 실패")
+app.kiwoom.KiwoomError: ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])
+
+
+[2026-09-01T00:17:33.621809+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])"}
+exception_type=KiwoomError
+exception=ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 20605, in _provider_call_with_retry
+    return await call_factory(),retries,"ok",None
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2476, in daily_stock_chart
+    return await self._chart_request_with_variants(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2373, in _chart_request_with_variants
+    raise KiwoomError(" / ".join(errors[-4:]) or f"{api_id} 차트 조회 실패")
+app.kiwoom.KiwoomError: ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])
+
+
+[2026-09-01T00:17:36.870487+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])"}
+exception_type=KiwoomError
+exception=ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 20605, in _provider_call_with_retry
+    return await call_factory(),retries,"ok",None
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2476, in daily_stock_chart
+    return await self._chart_request_with_variants(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2373, in _chart_request_with_variants
+    raise KiwoomError(" / ".join(errors[-4:]) or f"{api_id} 차트 조회 실패")
+app.kiwoom.KiwoomError: ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])
+
+
+[2026-09-01T00:17:40.104711+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])"}
+exception_type=KiwoomError
+exception=ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 20605, in _provider_call_with_retry
+    return await call_factory(),retries,"ok",None
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2476, in daily_stock_chart
+    return await self._chart_request_with_variants(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2373, in _chart_request_with_variants
+    raise KiwoomError(" / ".join(errors[-4:]) or f"{api_id} 차트 조회 실패")
+app.kiwoom.KiwoomError: ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])
+
+
+[2026-09-01T00:17:43.340410+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])"}
+exception_type=KiwoomError
+exception=ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 20605, in _provider_call_with_retry
+    return await call_factory(),retries,"ok",None
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2476, in daily_stock_chart
+    return await self._chart_request_with_variants(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2373, in _chart_request_with_variants
+    raise KiwoomError(" / ".join(errors[-4:]) or f"{api_id} 차트 조회 실패")
+app.kiwoom.KiwoomError: ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])
+
+
+[2026-09-01T00:17:46.602038+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])"}
+exception_type=KiwoomError
+exception=ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 20605, in _provider_call_with_retry
+    return await call_factory(),retries,"ok",None
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2476, in daily_stock_chart
+    return await self._chart_request_with_variants(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2373, in _chart_request_with_variants
+    raise KiwoomError(" / ".join(errors[-4:]) or f"{api_id} 차트 조회 실패")
+app.kiwoom.KiwoomError: ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / ka10081: 응답은 성공했지만 일봉 행을 찾지 못했습니다. / [2](입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp])
+
+
+[2026-09-01T00:17:46.621712+09:00] [INFO] KIWOOM_PRICES_PROGRESS
+details={"completed": 2524, "total": 2524, "current_code": "000090", "current_name": "에임드바이오", "success": 2516, "failed": 8, "kiwoom_runtime": {"state": "warning", "cooldown_seconds": 0.0, "last_error": "ka10081: 입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp]", "last_success_at": "2026-08-31T15:17:46.601522+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 66989.4, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:17:46.622861+09:00] [INFO] KIWOOM_METRICS_PHASE_START
+details={"stocks": 2524, "kiwoom_runtime": {"state": "warning", "cooldown_seconds": 0.0, "last_error": "ka10081: 입력 값 오류입니다[1511:필수 입력 값에 값이 존재하지 않습니다. 필수입력 파라미터=upd_stkpc_tp]", "last_success_at": "2026-08-31T15:17:46.601522+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 66989.4, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:17:46.836516+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 1, "total": 2524, "current_code": "000020", "current_name": "동화약품", "success": 2517, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:17:46.817436+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 66989.2, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:19:33.798521+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 100, "total": 2524, "current_code": "002620", "current_name": "제일파마홀딩스", "success": 2616, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:19:33.780070+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 66882.2, "queued": 1, "gate_active_api_id": "ka10076", "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:21:21.851467+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 200, "total": 2524, "current_code": "005250", "current_name": "녹십자홀딩스", "success": 2716, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:21:21.810630+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 66774.1, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:23:09.860018+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 300, "total": 2524, "current_code": "009460", "current_name": "한창제지", "success": 2816, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:23:09.840722+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 66666.1, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:24:57.881906+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 400, "total": 2524, "current_code": "017040", "current_name": "광명전기", "success": 2916, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:24:57.862930+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 66558.1, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:26:45.949028+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 500, "total": 2524, "current_code": "035720", "current_name": "카카오", "success": 3016, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:26:45.925219+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 66450.1, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:28:33.993116+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 600, "total": 2524, "current_code": "091810", "current_name": "트리니티항공", "success": 3116, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:28:33.967363+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 66342.0, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:30:22.030125+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 700, "total": 2524, "current_code": "227840", "current_name": "현대코퍼레이션홀딩스", "success": 3216, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:30:21.998346+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 66234.0, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:32:10.040939+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 800, "total": 2524, "current_code": "900310", "current_name": "컬러레이", "success": 3316, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:32:10.024547+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 66126.0, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:33:58.073465+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 900, "total": 2524, "current_code": "019550", "current_name": "SBI인베스트먼트", "success": 3416, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:33:58.051998+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 66017.9, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:35:46.103004+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 1000, "total": 2524, "current_code": "034950", "current_name": "한국기업평가", "success": 3516, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:35:46.083385+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 65909.9, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:37:34.125925+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 1100, "total": 2524, "current_code": "042420", "current_name": "네오위즈홀딩스", "success": 3616, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:37:34.097740+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 65801.9, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:39:22.188079+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 1200, "total": 2524, "current_code": "052790", "current_name": "액토즈소프트", "success": 3716, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:39:22.163429+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 65693.8, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:41:10.190744+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 1300, "total": 2524, "current_code": "065130", "current_name": "탑엔지니어링", "success": 3816, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:41:10.168759+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 65585.8, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:42:58.226602+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 1400, "total": 2524, "current_code": "078600", "current_name": "대주전자재료", "success": 3916, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:42:58.207249+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 65477.8, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:44:46.280814+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 1500, "total": 2524, "current_code": "092070", "current_name": "디엔에프", "success": 4016, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:44:46.239299+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 65369.7, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:46:34.319111+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 1600, "total": 2524, "current_code": "108860", "current_name": "셀바스AI", "success": 4116, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:46:34.273360+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 65261.7, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:48:22.317048+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 1700, "total": 2524, "current_code": "137950", "current_name": "제이씨케미칼", "success": 4216, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:48:22.293395+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 65153.7, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:50:10.327861+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 1800, "total": 2524, "current_code": "189980", "current_name": "흥국에프엔비", "success": 4316, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:50:10.307903+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 65045.7, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:51:58.366640+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 1900, "total": 2524, "current_code": "220100", "current_name": "퓨쳐켐", "success": 4416, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:51:58.343234+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 64937.6, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:53:46.401476+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 2000, "total": 2524, "current_code": "257370", "current_name": "피엔티엠에스", "success": 4516, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:53:46.375543+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 64829.6, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:55:34.437549+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 2100, "total": 2524, "current_code": "298540", "current_name": "더네이쳐홀딩스", "success": 4616, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:55:34.406950+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 64721.6, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:57:22.439699+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 2200, "total": 2524, "current_code": "340450", "current_name": "지씨지놈", "success": 4716, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:57:22.413286+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 64613.6, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T00:59:10.456419+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 2300, "total": 2524, "current_code": "383310", "current_name": "에코프로에이치엔", "success": 4816, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T15:59:10.435838+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 64505.5, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T01:00:58.495575+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 2400, "total": 2524, "current_code": "443670", "current_name": "에스피소프트", "success": 4916, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T16:00:58.470394+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 64397.5, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T01:02:46.507597+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 2500, "total": 2524, "current_code": "491000", "current_name": "리브스메드", "success": 5016, "failed": 8, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T16:02:46.488362+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 64289.5, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T01:03:04.844287+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']"}
+exception_type=KiwoomError
+exception=ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 20605, in _provider_call_with_retry
+    return await call_factory(),retries,"ok",None
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2449, in stock_basic_metrics
+    raise KiwoomError(
+app.kiwoom.KiwoomError: ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']
+
+
+[2026-09-01T01:03:05.927318+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']"}
+exception_type=KiwoomError
+exception=ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 20605, in _provider_call_with_retry
+    return await call_factory(),retries,"ok",None
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2449, in stock_basic_metrics
+    raise KiwoomError(
+app.kiwoom.KiwoomError: ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']
+
+
+[2026-09-01T01:03:07.014903+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']"}
+exception_type=KiwoomError
+exception=ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 20605, in _provider_call_with_retry
+    return await call_factory(),retries,"ok",None
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2449, in stock_basic_metrics
+    raise KiwoomError(
+app.kiwoom.KiwoomError: ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']
+
+
+[2026-09-01T01:03:08.101547+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']"}
+exception_type=KiwoomError
+exception=ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 20605, in _provider_call_with_retry
+    return await call_factory(),retries,"ok",None
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2449, in stock_basic_metrics
+    raise KiwoomError(
+app.kiwoom.KiwoomError: ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']
+
+
+[2026-09-01T01:03:09.166317+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']"}
+exception_type=KiwoomError
+exception=ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 20605, in _provider_call_with_retry
+    return await call_factory(),retries,"ok",None
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2449, in stock_basic_metrics
+    raise KiwoomError(
+app.kiwoom.KiwoomError: ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']
+
+
+[2026-09-01T01:03:10.250001+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']"}
+exception_type=KiwoomError
+exception=ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 20605, in _provider_call_with_retry
+    return await call_factory(),retries,"ok",None
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2449, in stock_basic_metrics
+    raise KiwoomError(
+app.kiwoom.KiwoomError: ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']
+
+
+[2026-09-01T01:03:11.329647+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']"}
+exception_type=KiwoomError
+exception=ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 20605, in _provider_call_with_retry
+    return await call_factory(),retries,"ok",None
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2449, in stock_basic_metrics
+    raise KiwoomError(
+app.kiwoom.KiwoomError: ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']
+
+
+[2026-09-01T01:03:12.421693+09:00] [ERROR] SYNC_EXCEPTION_CAPTURED
+details={"exception_type": "KiwoomError", "message": "ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']"}
+exception_type=KiwoomError
+exception=ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']
+traceback=
+Traceback (most recent call last):
+  File "/home/conda/Stocklog/backend/app/main.py", line 20605, in _provider_call_with_retry
+    return await call_factory(),retries,"ok",None
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/conda/Stocklog/backend/app/kiwoom.py", line 2449, in stock_basic_metrics
+    raise KiwoomError(
+app.kiwoom.KiwoomError: ka10001 응답은 성공했지만 사용할 기본지표를 찾지 못했습니다. top_keys=['stk_cd', 'stk_nm', 'setl_mm', 'fav', 'cap', 'flo_stk', 'crd_rt', 'oyr_hgst', 'oyr_lwst', 'mac', 'mac_wght', 'for_exh_rt', 'repl_pric', 'per', 'eps', 'roe', 'pbr', 'ev', 'bps', 'sale_amt', 'bus_pro', 'cup_nga', '250hgst', '250lwst', 'high_pric', 'open_pric', 'low_pric', 'upl_pric', 'lst_pric', 'base_pric', 'exp_cntr_pric', 'exp_cntr_qty', '250hgst_pric_dt', '250hgst_pric_pre_rt', '250lwst_pric_dt', '250lwst_pric_pre_rt', 'cur_prc', 'pre_sig', 'pred_pre', 'flu_rt', 'trde_qty', 'trde_pre', 'fav_unit', 'dstr_stk', 'dstr_rt', 'return_code', 'return_msg']
+
+
+[2026-09-01T01:03:12.447386+09:00] [INFO] KIWOOM_METRICS_PROGRESS
+details={"completed": 2524, "total": 2524, "current_code": "000090", "current_name": "에임드바이오", "success": 5032, "failed": 16, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T16:03:12.420022+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 64263.6, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T01:03:12.448161+09:00] [INFO] KIWOOM_PART_DONE
+details={"stocks": 2524, "success": 5032, "failed": 16, "stats": {"retried": 0, "transient_recovered": 0, "skipped": 0, "cached": 0, "hard_failures": 16, "deferred": 0, "deferred_price_stocks": 0, "deferred_metric_stocks": 0, "provider_circuit_open": false, "provider_circuit_reason": "", "ok": false, "stocks": 2524}, "kiwoom_runtime": {"state": "ok", "cooldown_seconds": 0.0, "last_error": "", "last_success_at": "2026-08-31T16:03:12.420022+00:00", "token_cached": true, "token_expires_dt": "20260901185916", "token_valid_seconds": 64263.6, "queued": 0, "gate_active_api_id": null, "gate_active_seconds": 0.0, "gate_wait_timeout_seconds": 90.0, "mock_same_tr_min_interval": 1.08, "global_min_interval": 0.23}}
+
+[2026-09-01T01:03:12.464312+09:00] [INFO] UNIFIED_KIWOOM_STAGE_RETURNED
+details={}
+
+[2026-09-01T01:03:12.479391+09:00] [INFO] MARKET_DATA_SYNC_WAIT_LOCK
+details={"mode": "dart"}
+
+[2026-09-01T01:03:12.479680+09:00] [INFO] MARKET_DATA_SYNC_LOCK_ACQUIRED
+details={"mode": "dart"}
+
+[2026-09-01T01:08:27.948587+09:00] [INFO] UNIFIED_CLASSIFICATION_STAGE_START
+details={}
+
+[2026-09-01T01:08:27.948987+09:00] [INFO] CLASSIFICATION_STAGE_START
+details={"processed": 0, "total": 0, "message": "종목 사업분류 동기화를 시작합니다."}
+
+[2026-09-01T01:08:27.964384+09:00] [INFO] CLASSIFICATION_DART_CREDENTIAL_READY
+details={"processed": 0, "total": 0, "message": "OpenDART API 설정 확인 완료"}
+
+[2026-09-01T01:08:28.014465+09:00] [INFO] CLASSIFICATION_CORP_CODE_START
+details={"processed": 0, "total": 0, "message": "OpenDART 상장사 고유번호를 갱신합니다."}
+
+[2026-09-01T01:08:30.554656+09:00] [INFO] CLASSIFICATION_CORP_CODE_DONE
+details={"processed": 0, "total": 3988, "message": "기업 고유번호 확인 완료 · 신규/변경 0개"}
+
+[2026-09-01T01:08:30.876038+09:00] [INFO] CLASSIFICATION_UNIVERSE_READY
+details={"processed": 0, "total": 2524, "message": "활성 종목 2,524개 분류 시작"}
+
+[2026-09-01T01:08:31.145815+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 5, "total": 2524, "message": "사업분류 5/2,524 · OpenDART 확인 5 · 보조분류 후보 0 · 재시도 대기 0"}
+
+[2026-09-01T01:08:34.637046+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 100, "total": 2524, "message": "사업분류 100/2,524 · OpenDART 확인 94 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:08:38.576051+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 200, "total": 2524, "message": "사업분류 200/2,524 · OpenDART 확인 194 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:08:42.325009+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 300, "total": 2524, "message": "사업분류 300/2,524 · OpenDART 확인 294 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:08:46.116251+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 400, "total": 2524, "message": "사업분류 400/2,524 · OpenDART 확인 394 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:08:49.949122+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 500, "total": 2524, "message": "사업분류 500/2,524 · OpenDART 확인 494 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:08:53.954816+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 600, "total": 2524, "message": "사업분류 600/2,524 · OpenDART 확인 594 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:08:57.764194+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 700, "total": 2524, "message": "사업분류 700/2,524 · OpenDART 확인 694 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:09:01.578284+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 800, "total": 2524, "message": "사업분류 800/2,524 · OpenDART 확인 794 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:09:05.736390+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 900, "total": 2524, "message": "사업분류 900/2,524 · OpenDART 확인 894 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:09:09.741338+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 1000, "total": 2524, "message": "사업분류 1,000/2,524 · OpenDART 확인 994 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:09:22.631981+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 1100, "total": 2524, "message": "사업분류 1,100/2,524 · OpenDART 확인 1,011 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:09:37.170169+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 1200, "total": 2524, "message": "사업분류 1,200/2,524 · OpenDART 확인 1,011 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:09:51.127273+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 1300, "total": 2524, "message": "사업분류 1,300/2,524 · OpenDART 확인 1,011 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:10:04.872088+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 1400, "total": 2524, "message": "사업분류 1,400/2,524 · OpenDART 확인 1,011 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:10:19.443704+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 1500, "total": 2524, "message": "사업분류 1,500/2,524 · OpenDART 확인 1,011 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:10:33.369600+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 1600, "total": 2524, "message": "사업분류 1,600/2,524 · OpenDART 확인 1,011 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:10:47.327525+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 1700, "total": 2524, "message": "사업분류 1,700/2,524 · OpenDART 확인 1,011 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:11:01.775984+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 1800, "total": 2524, "message": "사업분류 1,800/2,524 · OpenDART 확인 1,011 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:11:16.085495+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 1900, "total": 2524, "message": "사업분류 1,900/2,524 · OpenDART 확인 1,011 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:11:30.466808+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 2000, "total": 2524, "message": "사업분류 2,000/2,524 · OpenDART 확인 1,011 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:11:44.575234+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 2100, "total": 2524, "message": "사업분류 2,100/2,524 · OpenDART 확인 1,011 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:11:58.701585+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 2200, "total": 2524, "message": "사업분류 2,200/2,524 · OpenDART 확인 1,011 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:12:13.933310+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 2300, "total": 2524, "message": "사업분류 2,300/2,524 · OpenDART 확인 1,011 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:12:28.187735+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 2400, "total": 2524, "message": "사업분류 2,400/2,524 · OpenDART 확인 1,011 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:12:42.390383+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 2500, "total": 2524, "message": "사업분류 2,500/2,524 · OpenDART 확인 1,011 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:12:45.742280+09:00] [INFO] CLASSIFICATION_PROGRESS
+details={"processed": 2524, "total": 2524, "message": "사업분류 2,524/2,524 · OpenDART 확인 1,011 · 보조분류 후보 6 · 재시도 대기 0"}
+
+[2026-09-01T01:12:45.836661+09:00] [INFO] CLASSIFICATION_FINALIZING_START
+details={"processed": 2524, "total": 2524, "message": "대표 분류 커버리지를 계산합니다."}
+
+[2026-09-01T01:12:46.276707+09:00] [INFO] CLASSIFICATION_DONE
+details={"processed": 2524, "total": 2524, "message": "사업분류 완료 · OpenDART 1,011 · 보조분류 2 · 기타 사업 4 · 다음회차 보강 0 · 실제 오류 1,507"}
+
+[2026-09-01T01:12:46.299725+09:00] [INFO] UNIFIED_CLASSIFICATION_STAGE_RETURNED
+details={}
+
+[2026-09-01T01:59:21.978794+09:00] [INFO] UNIFIED_SYNC_FINISH
+details={"trigger": "manual", "phase": "success_with_warnings", "stage": "완료 · 일부 오류"}
+

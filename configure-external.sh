@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "$0")" && pwd)"
+ENV_FILE="$ROOT/.env"
+LEGACY_ENV="$ROOT/stocklog.env"
+
+HOST="${1:-}"
+PUBLIC_PORT="${2:-3000}"
+
+if [ -z "$HOST" ]; then
+  echo "사용법: ./configure-external.sh somensomes.iptime.org 3000"
+  exit 1
+fi
+
+HOST="${HOST#http://}"
+HOST="${HOST#https://}"
+HOST="${HOST%%/*}"
+HOST="${HOST%%:*}"
+
+if [[ ! "$PUBLIC_PORT" =~ ^[0-9]+$ ]]; then
+  echo "[ERROR] 외부 포트는 숫자여야 합니다."
+  exit 1
+fi
+
+declare -A CFG
+
+read_cfg() {
+  local file="$1"
+  [ -f "$file" ] || return 0
+
+  while IFS='=' read -r key value; do
+    [[ -z "$key" ]] && continue
+    [[ "$key" =~ ^[[:space:]]*# ]] && continue
+
+    key="$(echo "$key" | xargs)"
+    value="${value:-}"
+
+    case "$key" in
+      STOCKLOG_BIND_HOST|STOCKLOG_FRONTEND_PORT|STOCKLOG_BACKEND_PORT|STOCKLOG_PUBLIC_HOST|STOCKLOG_PUBLIC_PORT|STOCKLOG_ALLOWED_HOSTS|STOCKLOG_MOBILE_BACKEND_PORT|STOCKLOG_MOBILE_FALLBACK_PORT)
+        CFG["$key"]="$value"
+        ;;
+    esac
+  done < "$file"
+}
+
+read_cfg "$LEGACY_ENV"
+read_cfg "$ENV_FILE"
+
+CFG[STOCKLOG_BIND_HOST]="${CFG[STOCKLOG_BIND_HOST]:-0.0.0.0}"
+CFG[STOCKLOG_FRONTEND_PORT]="${CFG[STOCKLOG_FRONTEND_PORT]:-5174}"
+CFG[STOCKLOG_BACKEND_PORT]="${CFG[STOCKLOG_BACKEND_PORT]:-8100}"
+CFG[STOCKLOG_PUBLIC_HOST]="$HOST"
+CFG[STOCKLOG_PUBLIC_PORT]="$PUBLIC_PORT"
+CFG[STOCKLOG_MOBILE_BACKEND_PORT]="${CFG[STOCKLOG_MOBILE_BACKEND_PORT]:-${CFG[STOCKLOG_BACKEND_PORT]}}"
+CFG[STOCKLOG_MOBILE_FALLBACK_PORT]="${CFG[STOCKLOG_MOBILE_FALLBACK_PORT]:-$PUBLIC_PORT}"
+CFG[STOCKLOG_ALLOWED_HOSTS]="${CFG[STOCKLOG_ALLOWED_HOSTS]:-}"
+
+cat > "$ENV_FILE" <<EOF
+STOCKLOG_BIND_HOST=${CFG[STOCKLOG_BIND_HOST]}
+STOCKLOG_FRONTEND_PORT=${CFG[STOCKLOG_FRONTEND_PORT]}
+STOCKLOG_BACKEND_PORT=${CFG[STOCKLOG_BACKEND_PORT]}
+STOCKLOG_PUBLIC_HOST=${CFG[STOCKLOG_PUBLIC_HOST]}
+STOCKLOG_PUBLIC_PORT=${CFG[STOCKLOG_PUBLIC_PORT]}
+STOCKLOG_ALLOWED_HOSTS=${CFG[STOCKLOG_ALLOWED_HOSTS]}
+STOCKLOG_MOBILE_BACKEND_PORT=${CFG[STOCKLOG_MOBILE_BACKEND_PORT]}
+STOCKLOG_MOBILE_FALLBACK_PORT=${CFG[STOCKLOG_MOBILE_FALLBACK_PORT]}
+EOF
+
+echo "[OK] $ENV_FILE 저장 완료"
+echo "외부: http://${HOST}:${PUBLIC_PORT}"
+echo "공유기: 외부 TCP ${PUBLIC_PORT} -> 192.168.0.200:${CFG[STOCKLOG_FRONTEND_PORT]}"
+echo "모바일 직접 API: http://${HOST}:${CFG[STOCKLOG_MOBILE_BACKEND_PORT]}"
+echo "모바일 fallback: http://${HOST}:${CFG[STOCKLOG_MOBILE_FALLBACK_PORT]}"
+echo "다음: ./restart-mobile.sh"
